@@ -1,5 +1,7 @@
 package ir.zeroandone.app.domain;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -40,6 +42,7 @@ public class Person {
     private long id;
 
     @NotNull
+    @NotEmpty
     private String firstName;
 
     @NotNull

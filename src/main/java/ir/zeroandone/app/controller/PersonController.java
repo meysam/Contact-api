@@ -6,10 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
@@ -46,12 +43,12 @@ public class PersonController extends WebMvcConfigurerAdapter {
     }
 
     @RequestMapping(value = "/new", method = RequestMethod.POST)
-    public String create(@Valid Person person, BindingResult bindingResult) {
+    public String create(@ModelAttribute("person") @Valid Person person, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "persons/new";
         }
         repository.save(person);
-        return "redirect:/result";
+        return "redirect:/results";
     }
 
  /*   @RequestMapping(value = "/update", method = RequestMethod.POST)
