@@ -1,12 +1,12 @@
-<html layout:decorator="layout" xmlns:th="http://www.w3.org/1999/xhtml">
-    <div layout:fragment="content">
-        <form method="post" name="comment_form" id="comment_form" action="/persons/update" role="form">
-            <div class="form-group">
-                <label for="firstName">Person</label>
-                <textarea rows="5" class="form-control" id="firstName" name="firstName" th:text="${person.firstName}"/>
-            </div>
-            <input type="hidden" id="person_id" rows="5" class="form-control" name="person_id" th:value="${person.id}"/>
-            <button type="submit" id="submit" class="btn btn-primary">Submit</button>
-        </form>
-    </div>
+<html layout:decorator="layout">
+<div layout:fragment="content">
+    <form method="post" name="comment_form" id="comment_form" action="/persons/update" role="form">
+        <div class="form-group">
+            <label for="firstName">Post</label>
+            <textarea rows="5" class="form-control" id="firstName" name="firstName" th:text="${person.firstName}"/>
+        </div>
+        <input type="hidden" id="person_id" rows="5" class="form-control" name="person_id" th:value="${person.id}"/>
+        <button type="submit" id="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
 </html>

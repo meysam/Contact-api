@@ -8,7 +8,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Application implements CommandLineRunner {
+public class Application  {
 
     @Autowired
     private PersonRepository repository;
@@ -17,11 +17,11 @@ public class Application implements CommandLineRunner {
         SpringApplication.run(Application.class, args);
     }
 
-    @Override
+  /*  @Override
     public void run(String... strings) throws Exception {
         for (int i = 0; i < 5; i++) {
             repository.save(new Person("Meysam" + (i+1)));
         }
 
-}
+}*/
 }
