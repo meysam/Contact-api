@@ -3,3 +3,6 @@ marketer.iml
 marketer.ipr
 marketer.iws
 .idea/
+node/
+node_modules/
+bower_components/

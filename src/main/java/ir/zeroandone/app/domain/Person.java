@@ -1,5 +1,6 @@
 package ir.zeroandone.app.domain;
 
+import ir.zeroandone.app.domain.validator.NationalId;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.Entity;
@@ -20,7 +21,7 @@ public class Person {
         this.firstName = firstName;
     }
 
-    public Person(String firstName, String middleName, String lastName, String fatherName, String gender, String marital, String nationalId, String birthCertificateId, long birthDivisionId, String issueDivision, String birthDate, String address, Date createdOn, Date updatedOn) {
+    public Person(String firstName, String middleName, String lastName, String fatherName, String gender, String marital, String nationalId, String birthCertificateId, String placeOfBirth, String issueDivision, String birthDate, String address, Date createdOn, Date updatedOn) {
         this.firstName = firstName;
         this.middleName = middleName;
         this.lastName = lastName;
@@ -29,7 +30,7 @@ public class Person {
         this.marital = marital;
         this.nationalId = nationalId;
         this.birthCertificateId = birthCertificateId;
-        this.birthDivisionId = birthDivisionId;
+        this.placeOfBirth = placeOfBirth;
         this.issueDivision = issueDivision;
         this.birthDate = birthDate;
         this.address = address;
@@ -60,7 +61,8 @@ public class Person {
     @NotNull
     private String marital;
 
-    @Size(min = 10,max = 10,message = "کد ملی باید ده رقم باشد")
+    @NationalId(message = "کد ملی صحیح وارد نمایید")
+    @Size(min = 10, max = 10, message = "کد ملی باید ده رقم باشد")
     @NotNull
     private String nationalId;
 
@@ -68,7 +70,7 @@ public class Person {
     private String birthCertificateId;
 
     @NotNull
-    private long birthDivisionId;
+    private String placeOfBirth;
 
     @NotNull
     private String issueDivision;
@@ -150,12 +152,12 @@ public class Person {
         this.birthCertificateId = birthCertificateId;
     }
 
-    public long getBirthDivisionId() {
-        return birthDivisionId;
+    public String getPlaceOfBirth() {
+        return placeOfBirth;
     }
 
-    public void setBirthDivisionId(long birthDivisionId) {
-        this.birthDivisionId = birthDivisionId;
+    public void setPlaceOfBirth(String placeOfBirth) {
+        this.placeOfBirth = placeOfBirth;
     }
 
     public String getBirthDate() {
