@@ -1,3 +1,0 @@
-$.validate({
-    modules : 'date, security'
-});
