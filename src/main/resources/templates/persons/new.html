@@ -90,6 +90,48 @@
                     issueDivision Error
                 </div>
             </div>
+            <div class="form-group col-xs-3">
+                <label for="issueDivision">ایمیل</label>
+                <input type="text" class="form-control" id="email" th:field="*{email}"
+                       data-validation="required"/>
+                <div class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">
+                    accountNumber Error
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-xs-3">
+                <label for="issueDivision">نام بانک</label>
+                <input type="text" class="form-control" id="bankName" th:field="*{bankName}"
+                       data-validation="required"/>
+                <div class="error" th:if="${#fields.hasErrors('bankName')}" th:errors="*{bankName}">
+                    bankName Error
+                </div>
+            </div>
+            <div class="form-group col-xs-3">
+                <label for="issueDivision">شماره حساب</label>
+                <input type="text" class="form-control" id="accountNumber" th:field="*{accountNumber}"
+                       data-validation="required"/>
+                <div class="error" th:if="${#fields.hasErrors('accountNumber')}" th:errors="*{accountNumber}">
+                    accountNumber Error
+                </div>
+            </div>
+            <div class="form-group col-xs-3">
+                <label for="issueDivision">تلفن </label>
+                <input type="text" class="form-control" id="phone" th:field="*{phone}"
+                       data-validation="required"/>
+                <div class="error" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}">
+                    cellPhone Error
+                </div>
+            </div>
+            <div class="form-group col-xs-3">
+                <label for="issueDivision">تلفن همراه</label>
+                <input type="text" class="form-control" id="cellPhone" th:field="*{cellPhone}"
+                       data-validation="required"/>
+                <div class="error" th:if="${#fields.hasErrors('cellPhone')}" th:errors="*{cellPhone}">
+                    cellPhone Error
+                </div>
+            </div>
         </div>
         <div class="row">
             <div class="form-group col-xs-12">

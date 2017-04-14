@@ -1,13 +1,13 @@
 package ir.zeroandone.app.controller;
 
+import ir.zeroandone.app.application.SmsService;
 import ir.zeroandone.app.domain.Person;
 import ir.zeroandone.app.domain.PersonRepository;
+import ir.zeroandone.app.infra.helper.RandomString;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
@@ -19,6 +19,9 @@ public class PersonController extends WebMvcConfigurerAdapter {
 
     @Autowired
     private PersonRepository repository;
+
+    @Autowired
+    private SmsService smsService;
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
@@ -44,10 +47,14 @@ public class PersonController extends WebMvcConfigurerAdapter {
 
     @RequestMapping(value = "/new", method = RequestMethod.POST)
     public String create(@ModelAttribute("person") @Valid Person person, BindingResult bindingResult) {
+        RandomString randomString = new RandomString(8);
+        person.setFollowingCode(randomString.nextString());
         if (bindingResult.hasErrors()) {
             return "persons/new";
         }
         repository.save(person);
+        String message = String.format("%s \n %s : %s", "اطلاعات شما با موفقیت ثبت شد.", "کد رهگیری شما", person.getFollowingCode());
+        smsService.sendBySoap(message,person.getCellPhone());
         return "redirect:/results";
     }
 

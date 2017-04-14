@@ -21,22 +21,6 @@ public class Person {
         this.firstName = firstName;
     }
 
-    public Person(String firstName, String middleName, String lastName, String fatherName, String gender, String marital, String nationalId, String birthCertificateId, String placeOfBirth, String issueDivision, String birthDate, String address, Date createdOn, Date updatedOn) {
-        this.firstName = firstName;
-        this.middleName = middleName;
-        this.lastName = lastName;
-        this.fatherName = fatherName;
-        this.gender = gender;
-        this.marital = marital;
-        this.nationalId = nationalId;
-        this.birthCertificateId = birthCertificateId;
-        this.placeOfBirth = placeOfBirth;
-        this.issueDivision = issueDivision;
-        this.birthDate = birthDate;
-        this.address = address;
-        this.createdOn = createdOn;
-        this.updatedOn = updatedOn;
-    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -80,6 +64,24 @@ public class Person {
 
     @NotNull
     private String address;
+
+    @NotNull
+    private String cellPhone;
+
+    @NotNull
+    private String email;
+
+    private String followingCode;
+
+    @NotNull
+    private String accountNumber;
+
+    @NotNull
+    private String phone;
+
+    @NotNull
+    private String bankName;
+
 
     private Date createdOn;
     private Date updatedOn;
@@ -198,5 +200,53 @@ public class Person {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getCellPhone() {
+        return cellPhone;
+    }
+
+    public void setCellPhone(String cellPhone) {
+        this.cellPhone = cellPhone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getFollowingCode() {
+        return followingCode;
+    }
+
+    public void setFollowingCode(String followingCode) {
+        this.followingCode = followingCode;
+    }
+
+    public String getAccountNumber() {
+        return accountNumber;
+    }
+
+    public void setAccountNumber(String accountNumber) {
+        this.accountNumber = accountNumber;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getBankName() {
+        return bankName;
+    }
+
+    public void setBankName(String bankName) {
+        this.bankName = bankName;
     }
 }
