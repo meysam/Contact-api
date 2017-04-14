@@ -52,7 +52,7 @@
             <div class="form-group col-xs-3">
                 <label for="nationalId">کد ملی</label>
                 <input type="text" class="form-control" id="nationalId" th:field="*{nationalId}"
-                       data-validation="required"/>
+                       data-validation="required nid"/>
                 <div class="error" th:if="${#fields.hasErrors('nationalId')}" th:errors="*{nationalId}">FirstName
                     Error
                 </div>
@@ -70,7 +70,8 @@
                 <label for="placeOfBirth">محل تولد</label>
                 <input type="text" class="form-control" id="placeOfBirth" th:field="*{placeOfBirth}"
                        data-validation="required"/>
-                <div class="error" th:if="${#fields.hasErrors('placeOfBirth')}" th:errors="*{placeOfBirth}">placeOfBirth Error
+                <div class="error" th:if="${#fields.hasErrors('placeOfBirth')}" th:errors="*{placeOfBirth}">placeOfBirth
+                    Error
                 </div>
             </div>
             <div class="form-group col-xs-3">
@@ -85,12 +86,15 @@
                 <label for="issueDivision">محل صدور شناسنامه</label>
                 <input type="text" class="form-control" id="issueDivision" th:field="*{issueDivision}"
                        data-validation="required"/>
-                <div class="error" th:if="${#fields.hasErrors('issueDivision')}" th:errors="*{issueDivision}">issueDivision Error
+                <div class="error" th:if="${#fields.hasErrors('issueDivision')}" th:errors="*{issueDivision}">
+                    issueDivision Error
                 </div>
             </div>
-            <div class="form-group col-xs-3">
+        </div>
+        <div class="row">
+            <div class="form-group col-xs-12">
                 <label for="address">آدرس</label>
-                <input type="text" class="form-control" id="address" th:field="*{address}" data-validation="required"/>
+                <textarea class="form-control" rows="5" id="address" th:field="*{address}" data-validation="required"/>
                 <div class="error" th:if="${#fields.hasErrors('address')}" th:errors="*{address}">address Error
                 </div>
             </div>
@@ -100,9 +104,20 @@
 </div>
 </html>
 <script>
+    $.formUtils.addValidator({
+        name: 'nid',
+        validatorFunction: function (value, $el, config, language, $form) {
+            return validate_nid(value);
+        },
+        errorMessage: 'کد ملی صحیح وارد نمایید',
+        errorMessageKey: 'badNid'
+    });
     $.validate({
         lang: 'fa',
         modules: 'date, security'
     });
+
+
 </script>
+<script src="../js/custom-validations.js"></script>
 
