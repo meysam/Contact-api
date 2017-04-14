@@ -6,3 +6,4 @@ marketer.iws
 node/
 node_modules/
 bower_components/
+src/test/
