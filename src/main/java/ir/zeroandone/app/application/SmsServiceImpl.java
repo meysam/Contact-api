@@ -2,16 +2,13 @@ package ir.zeroandone.app.application;
 
 import ir.zeroandone.app.infra.sms.ErrorCodes;
 import ir.zeroandone.app.infra.sms.common.http.HttpRequestHandler;
-import org.springframework.stereotype.Component;
 import org.apache.axis.client.Call;
 import org.apache.axis.client.Service;
 import org.apache.axis.encoding.XMLType;
+import org.springframework.stereotype.Component;
+
 import javax.xml.namespace.QName;
 import javax.xml.rpc.ParameterMode;
-import java.net.URL;
-
-
-import javax.xml.namespace.QName;
 import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.net.URLEncoder;
@@ -142,7 +139,6 @@ public class SmsServiceImpl implements SmsService {
 
 
     }
-
 
     private static String makeUrlString() throws UnsupportedEncodingException {
         final StringBuilder sb = new StringBuilder(END_POINT_URL);

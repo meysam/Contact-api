@@ -101,15 +101,53 @@
         </div>
         <div class="row">
             <div class="form-group col-xs-3">
-                <label for="issueDivision">نام بانک</label>
-                <input type="text" class="form-control" id="bankName" th:field="*{bankName}"
-                       data-validation="required"/>
+                <label for="bankName">نام بانک</label>
+                <!--<input type="text" class="form-control" id="bankName" th:field="*{bankName}"
+                       data-validation="required"/>-->
+                <select id="bankName" th:field="*{bankName}" class="form-control" data-validation="required">
+                    <option selected="selected" value="">انتخاب کنید</option>
+                    <option value="bmi">ملّي ايران</option>
+                    <option value="sepah"> سپه</option>
+                    <option value="edbi"> توسعه صادرات ايران</option>
+                    <option value="bim"> صنعت و معدن</option>
+                    <option value="bki"> کشاورزي</option>
+                    <option value="maskan"> مسکن</option>
+                    <option value="postbank">پست بانک ايران</option>
+                    <option value="ttbank"> توسعه تعاون</option>
+                    <option value="enbank"> اقتصاد نوين</option>
+                    <option value="persian"> پارسيان</option>
+                    <option value="bpi"> پاسارگاد</option>
+                    <option value="karafarin"> کارآفرين</option>
+                    <option value="sb24"> سامان</option>
+                    <option value="sina"> سينا</option>
+                    <option value="sbank"> سرمايه</option>
+                    <option value="shahr"> شهر</option>
+                    <option value="day"> دي</option>
+                    <option value="bsi"> صادرات</option>
+                    <option value="mellat"> ملت</option>
+                    <option value="tejarat"> تجارت</option>
+                    <option value="refah"> رفاه</option>
+                    <option value="tourism"> گردشگري</option>
+                    <option value="izbank"> ايران زمين</option>
+                    <option value="ghavamin"> قوامين</option>
+                    <option value="ansar"> انصار</option>
+                    <option value="middleeast"> خاور ميانه</option>
+                    <option value="ivbb">بانک مشترک ايران-ونزوئلا</option>
+                    <option value="ba24"> آينده</option>
+                    <option value="cid">موسسه اعتباري توسعه</option>
+                    <option value="kosarfci">موسسه اعتباري کوثر مرکزي</option>
+                    <option value="melal">موسسه اعتباري ملل</option>
+                    <option value="cinoor">موسسه اعتباري نور</option>
+                    <option value="caspianci">موسسه اعتباري کاسپين</option>
+                    <option value="qmb"> قرض‌الحسنه مهر ايران</option>
+                    <option value="rqbank"> قرض‌الحسنه رسالت</option>
+                </select>
                 <div class="error" th:if="${#fields.hasErrors('bankName')}" th:errors="*{bankName}">
                     bankName Error
                 </div>
             </div>
             <div class="form-group col-xs-3">
-                <label for="issueDivision">شماره حساب</label>
+                <label for="accountNumber">شماره حساب</label>
                 <input type="text" class="form-control" id="accountNumber" th:field="*{accountNumber}"
                        data-validation="required"/>
                 <div class="error" th:if="${#fields.hasErrors('accountNumber')}" th:errors="*{accountNumber}">
@@ -117,7 +155,7 @@
                 </div>
             </div>
             <div class="form-group col-xs-3">
-                <label for="issueDivision">تلفن </label>
+                <label for="phone">تلفن </label>
                 <input type="text" class="form-control" id="phone" th:field="*{phone}"
                        data-validation="required"/>
                 <div class="error" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}">
@@ -125,9 +163,11 @@
                 </div>
             </div>
             <div class="form-group col-xs-3">
-                <label for="issueDivision">تلفن همراه</label>
+                <label for="cellPhone">تلفن همراه</label>
                 <input type="text" class="form-control" id="cellPhone" th:field="*{cellPhone}"
-                       data-validation="required"/>
+                       data-validation="custom"
+                       data-validation-regexp="^09(1[0-9]|3[0-9]|2[0-9])-?[0-9]{3}-?[0-9]{4}$"
+                       data-validation-error-msg="تلفن رادرست وارد نمایید(مثال: *********09)"/>
                 <div class="error" th:if="${#fields.hasErrors('cellPhone')}" th:errors="*{cellPhone}">
                     cellPhone Error
                 </div>
