@@ -25,7 +25,7 @@ public class PersonController extends WebMvcConfigurerAdapter {
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/results").setViewName("results");
+        registry.addViewController("persons/results").setViewName("results");
     }
 
  /*   @RequestMapping(value = "", method = RequestMethod.GET)
@@ -55,7 +55,7 @@ public class PersonController extends WebMvcConfigurerAdapter {
         repository.save(person);
         String message = String.format("%s \n %s : %s", "اطلاعات شما با موفقیت ثبت شد.", "کد رهگیری شما", person.getFollowingCode());
         smsService.sendBySoap(message,person.getCellPhone());
-        return "redirect:/results";
+        return "redirect:persons/results";
     }
 
  /*   @RequestMapping(value = "/update", method = RequestMethod.POST)
