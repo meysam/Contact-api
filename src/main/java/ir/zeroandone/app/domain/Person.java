@@ -3,15 +3,13 @@ package ir.zeroandone.app.domain;
 import ir.zeroandone.app.domain.validator.NationalId;
 import org.hibernate.validator.constraints.NotEmpty;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Date;
 
 @Entity
+@Table(name = "PersonMarketer")
 public class Person {
 
     public Person() {
