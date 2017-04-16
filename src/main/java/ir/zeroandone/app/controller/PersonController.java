@@ -6,6 +6,7 @@ import ir.zeroandone.app.domain.PersonRepository;
 import ir.zeroandone.app.infra.helper.RandomString;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
@@ -23,10 +24,28 @@ public class PersonController extends WebMvcConfigurerAdapter {
     @Autowired
     private SmsService smsService;
 
-    @Override
+    @RequestMapping(value = "/new", method = RequestMethod.GET)
+    public String newPerson(Person person) {
+        return "persons/new";
+    }
+
+    @RequestMapping(value = "/new", method = RequestMethod.POST)
+    public String create(@ModelAttribute("person") @Valid Person person, BindingResult bindingResult, Model model) {
+        RandomString randomString = new RandomString(8);
+        person.setFollowingCode(randomString.nextString());
+        if (bindingResult.hasErrors()) {
+            return "persons/new";
+        }
+        repository.save(person);
+        String message = String.format("%s \n %s : %s", "اطلاعات شما با موفقیت ثبت شد.", "کد رهگیری شما", person.getFollowingCode());
+        smsService.sendBySoap(message,person.getCellPhone());
+        return "persons/results";
+    }
+
+    /*@Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("persons/results").setViewName("results");
-    }
+    }*/
 
  /*   @RequestMapping(value = "", method = RequestMethod.GET)
     public String listPersons(Model model) {
@@ -40,23 +59,7 @@ public class PersonController extends WebMvcConfigurerAdapter {
         return new ModelAndView("redirect:/persons");
     }*/
 
-    @RequestMapping(value = "/new", method = RequestMethod.GET)
-    public String newPerson(Person person) {
-        return "persons/new";
-    }
 
-    @RequestMapping(value = "/new", method = RequestMethod.POST)
-    public String create(@ModelAttribute("person") @Valid Person person, BindingResult bindingResult) {
-        RandomString randomString = new RandomString(8);
-        person.setFollowingCode(randomString.nextString());
-        if (bindingResult.hasErrors()) {
-            return "persons/new";
-        }
-        repository.save(person);
-        String message = String.format("%s \n %s : %s", "اطلاعات شما با موفقیت ثبت شد.", "کد رهگیری شما", person.getFollowingCode());
-        smsService.sendBySoap(message,person.getCellPhone());
-        return "redirect:persons/results";
-    }
 
  /*   @RequestMapping(value = "/update", method = RequestMethod.POST)
     public ModelAndView update(@RequestParam("person_id") long id,
