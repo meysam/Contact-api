@@ -199,7 +199,29 @@
         modules: 'date, security'
     });
 
+    $(document).ready(function() {
 
+        $('#address').autocomplete({
+            serviceUrl: 'http://ganjensan.ir/Crm/GeoDivisions/Query',
+            paramName: "name",
+            delimiter: ",",
+            transformResult: function(response) {
+
+                return {
+                    //must convert json to javascript object before process
+                    suggestions: $.map($.parseJSON(response), function(item) {
+
+                        return { value: item.value, data: item.id };
+                    })
+
+                };
+
+            }
+
+        });
+
+    });
 </script>
+<script src="/bower_components/devbridge-autocomplete/dist/jquery.autocomplete.min.js"></script>
 <script src="../js/custom-validations.js"></script>
 

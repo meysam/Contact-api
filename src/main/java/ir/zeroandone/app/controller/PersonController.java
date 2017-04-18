@@ -1,6 +1,6 @@
 package ir.zeroandone.app.controller;
 
-import ir.zeroandone.app.application.SmsService;
+import ir.zeroandone.app.application.sms.SmsService;
 import ir.zeroandone.app.domain.Person;
 import ir.zeroandone.app.domain.PersonRepository;
 import ir.zeroandone.app.infra.helper.RandomString;
@@ -9,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import javax.validation.Valid;
