@@ -1,7 +1,7 @@
 package ir.zeroandone.app.integration.rest.address.service;
 
 
-import ir.zeroandone.app.application.dto.AddressDto;
+import ir.zeroandone.app.application.address.dto.AddressDto;
 
 import java.util.HashMap;
 

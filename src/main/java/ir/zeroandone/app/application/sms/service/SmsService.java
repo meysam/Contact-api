@@ -1,4 +1,4 @@
-package ir.zeroandone.app.application.sms;
+package ir.zeroandone.app.application.sms.service;
 
 public interface SmsService {
     long sendByHttp();

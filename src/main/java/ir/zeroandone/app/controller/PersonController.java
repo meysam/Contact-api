@@ -1,9 +1,11 @@
 package ir.zeroandone.app.controller;
 
-import ir.zeroandone.app.application.sms.SmsService;
+import ir.zeroandone.app.application.address.dto.AddressDto;
+import ir.zeroandone.app.application.sms.service.SmsService;
 import ir.zeroandone.app.domain.Person;
 import ir.zeroandone.app.domain.PersonRepository;
 import ir.zeroandone.app.infra.helper.RandomString;
+import org.json.simple.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +14,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 @RequestMapping("/persons")
@@ -39,6 +43,17 @@ public class PersonController extends WebMvcConfigurerAdapter {
         String message = String.format("%s \n %s : %s", "اطلاعات شما با موفقیت ثبت شد.", "کد رهگیری شما", person.getFollowingCode());
         smsService.sendBySoap(message,person.getCellPhone());
         return "persons/results";
+    }
+
+    @RequestMapping(value = "/address",method=RequestMethod.GET)
+    public @ResponseBody
+    List<AddressDto> sayHello(@RequestParam(value="name", required=false, defaultValue="Stranger") String name) {
+        List<AddressDto> addresses=new ArrayList<>();
+        AddressDto addressDto=new AddressDto();
+        addressDto.setValue(name);
+        addressDto.setId("12");
+        addresses.add(addressDto);
+        return addresses;
     }
 
     /*@Override

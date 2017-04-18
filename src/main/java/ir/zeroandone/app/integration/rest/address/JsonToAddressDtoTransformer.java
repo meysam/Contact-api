@@ -1,7 +1,7 @@
 package ir.zeroandone.app.integration.rest.address;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import ir.zeroandone.app.application.dto.AddressDto;
+import ir.zeroandone.app.application.address.dto.AddressDto;
 import ir.zeroandone.app.infra.transformer.JsonTransformer;
 
 import java.io.IOException;

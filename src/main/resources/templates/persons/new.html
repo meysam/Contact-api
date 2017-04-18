@@ -176,7 +176,7 @@
         <div class="row">
             <div class="form-group col-xs-12">
                 <label for="address">آدرس</label>
-                <textarea class="form-control" rows="5" id="address" th:field="*{address}" data-validation="required"/>
+                <input type="text" class="form-control" id="address" th:field="*{address}" data-validation="required"/>
                 <div class="error" th:if="${#fields.hasErrors('address')}" th:errors="*{address}">address Error
                 </div>
             </div>
@@ -198,28 +198,14 @@
         lang: 'fa',
         modules: 'date, security'
     });
-
-    $(document).ready(function() {
-
-        $('#address').autocomplete({
-            serviceUrl: 'http://ganjensan.ir/Crm/GeoDivisions/Query',
+    $(document).ready(function () {
+        $('#autocomplete').autocomplete({
+            serviceUrl: '/persons/address',
             paramName: "name",
-            delimiter: ",",
-            transformResult: function(response) {
-
-                return {
-                    //must convert json to javascript object before process
-                    suggestions: $.map($.parseJSON(response), function(item) {
-
-                        return { value: item.value, data: item.id };
-                    })
-
-                };
-
+            onSelect: function (suggestion) {
+                alert('You selected: ' + suggestion.value + ', ' + suggestion.data);
             }
-
         });
-
     });
 </script>
 <script src="/bower_components/devbridge-autocomplete/dist/jquery.autocomplete.min.js"></script>
