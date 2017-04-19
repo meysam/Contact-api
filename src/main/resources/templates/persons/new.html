@@ -201,23 +201,13 @@
     $(document).ready(function () {
         $('#address')
             .autocomplete({
-                minLength: 0,
                 source: function (request, response) {
-                    $.ajax({
-                        type: "GET",
-                        contentType: "application/json; charset=utf-8",
-                        url: '/persons/address',
-                        data: "name=" + document.getElementById('address').value,
-                        dataType: "json",
-                        success: function (data) {
-                            //var rows = autocompleteJSONParseCode(data);
+                    $.get('/persons/address', {name: document.getElementById('address').value},
+                        function (data) {
                             response(data);
-                        },
-                        error: function (result) {
-                            alert("Error");
-                        }
-                    });
-                }
+                        })
+                },
+                minLength: 1
             });
     });
 </script>

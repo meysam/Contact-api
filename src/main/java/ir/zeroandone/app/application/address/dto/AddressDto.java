@@ -1,8 +1,11 @@
 package ir.zeroandone.app.application.address.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.util.List;
 
 public class AddressDto {
+    @JsonIgnoreProperties(ignoreUnknown = true)
     String id;
     String value;
     List<AddressExtensiondto> extensions;

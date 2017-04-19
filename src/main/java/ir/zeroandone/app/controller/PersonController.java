@@ -1,6 +1,7 @@
 package ir.zeroandone.app.controller;
 
 import ir.zeroandone.app.application.address.dto.AddressDto;
+import ir.zeroandone.app.application.address.service.AddressService;
 import ir.zeroandone.app.application.sms.service.SmsService;
 import ir.zeroandone.app.domain.Person;
 import ir.zeroandone.app.domain.PersonRepository;
@@ -15,6 +16,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 import javax.validation.Valid;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 @Controller
@@ -26,6 +28,9 @@ public class PersonController extends WebMvcConfigurerAdapter {
 
     @Autowired
     private SmsService smsService;
+
+    @Autowired
+    private AddressService addressService;
 
     @RequestMapping(value = "/new", method = RequestMethod.GET)
     public String newPerson(Person person) {
@@ -41,18 +46,16 @@ public class PersonController extends WebMvcConfigurerAdapter {
         }
         repository.save(person);
         String message = String.format("%s \n %s : %s", "اطلاعات شما با موفقیت ثبت شد.", "کد رهگیری شما", person.getFollowingCode());
-        smsService.sendBySoap(message,person.getCellPhone());
+        smsService.sendBySoap(message, person.getCellPhone());
         return "persons/results";
     }
 
-    @RequestMapping(value = "/address",method=RequestMethod.GET)
+    @RequestMapping(value = "/address", method = RequestMethod.GET)
     public @ResponseBody
-    List<String> sayHello(@RequestParam(value="name", required=false, defaultValue="Stranger") String name) {
-        List<String> addresses=new ArrayList<>();
-        addresses.add("add1");
-        addresses.add("add2");
-        addresses.add("add3");
-        return addresses;
+    List<String> getAddress(@RequestParam(value = "name", required = false, defaultValue = "Stranger") String name) throws Exception {
+        HashMap<String, String> params = new HashMap<>();
+        params.put("name", name);
+        return addressService.getAddress(params);
     }
 
     /*@Override

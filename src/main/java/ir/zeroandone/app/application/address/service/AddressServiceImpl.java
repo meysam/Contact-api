@@ -5,7 +5,9 @@ import ir.zeroandone.app.integration.rest.address.service.AddressIntegrationServ
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 @Component
 public class AddressServiceImpl implements AddressService{
@@ -14,8 +16,10 @@ public class AddressServiceImpl implements AddressService{
     AddressIntegrationService service;
 
     @Override
-    public String getAddress(HashMap<String,String> params) throws Exception {
-        AddressDto address = service.getAddress(params);
-        return address.getValue();
+    public List<String> getAddress(HashMap<String,String> params) throws Exception {
+        List<AddressDto> addresses = service.getAddress(params);
+        List<String> addressList=new ArrayList<>();
+        addresses.forEach(addressDto -> addressList.add(addressDto.getValue()));
+        return addressList;
     }
 }
