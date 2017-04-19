@@ -47,12 +47,11 @@ public class PersonController extends WebMvcConfigurerAdapter {
 
     @RequestMapping(value = "/address",method=RequestMethod.GET)
     public @ResponseBody
-    List<AddressDto> sayHello(@RequestParam(value="name", required=false, defaultValue="Stranger") String name) {
-        List<AddressDto> addresses=new ArrayList<>();
-        AddressDto addressDto=new AddressDto();
-        addressDto.setValue(name);
-        addressDto.setId("12");
-        addresses.add(addressDto);
+    List<String> sayHello(@RequestParam(value="name", required=false, defaultValue="Stranger") String name) {
+        List<String> addresses=new ArrayList<>();
+        addresses.add("add1");
+        addresses.add("add2");
+        addresses.add("add3");
         return addresses;
     }
 

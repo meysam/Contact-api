@@ -199,15 +199,28 @@
         modules: 'date, security'
     });
     $(document).ready(function () {
-        $('#autocomplete').autocomplete({
-            serviceUrl: '/persons/address',
-            paramName: "name",
-            onSelect: function (suggestion) {
-                alert('You selected: ' + suggestion.value + ', ' + suggestion.data);
-            }
-        });
+        $('#address')
+            .autocomplete({
+                minLength: 0,
+                source: function (request, response) {
+                    $.ajax({
+                        type: "GET",
+                        contentType: "application/json; charset=utf-8",
+                        url: '/persons/address',
+                        data: "name=" + document.getElementById('address').value,
+                        dataType: "json",
+                        success: function (data) {
+                            //var rows = autocompleteJSONParseCode(data);
+                            response(data);
+                        },
+                        error: function (result) {
+                            alert("Error");
+                        }
+                    });
+                }
+            });
     });
 </script>
-<script src="/bower_components/devbridge-autocomplete/dist/jquery.autocomplete.min.js"></script>
+<script src="/bower_components/jquery-ui/jquery-ui.min.js"></script>
 <script src="../js/custom-validations.js"></script>
 
