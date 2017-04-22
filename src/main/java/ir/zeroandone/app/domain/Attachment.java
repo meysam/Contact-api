@@ -10,7 +10,6 @@ public class Attachment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "attachment_id")
     private long id;
 
     @Column(name = "ContentLength", nullable = false)
@@ -32,7 +31,7 @@ public class Attachment {
     private String updatedOn;
 
     @Lob
-    @Column(name = "Content", nullable = false, columnDefinition = "mediumblob")
+    @Column(name = "Content", nullable = false, length=100000)
     private byte[] content;
 
     @ManyToOne
