@@ -8,12 +8,22 @@ import javax.persistence.*;
 @Table(name = "Attachments")
 public class Attachment {
 
+    public Attachment(long contentLength, String contentType, String fileName, String title, String createdOn, String updatedOn, byte[] content) {
+        this.contentLength = contentLength;
+        this.contentType = contentType;
+        this.fileName = fileName;
+        this.title = title;
+        this.createdOn = createdOn;
+        this.updatedOn = updatedOn;
+        this.content = content;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
     @Column(name = "ContentLength", nullable = false)
-    private String contentLength;
+    private long contentLength;
 
     @Column(name = "ContentType", nullable = false)
     private String contentType;
@@ -51,11 +61,11 @@ public class Attachment {
         this.person = person;
     }
 
-    public String getContentLength() {
+    public long getContentLength() {
         return contentLength;
     }
 
-    public void setContentLength(String contentLength) {
+    public void setContentLength(long contentLength) {
         this.contentLength = contentLength;
     }
 

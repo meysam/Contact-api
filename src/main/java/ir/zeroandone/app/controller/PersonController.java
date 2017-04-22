@@ -3,21 +3,27 @@ package ir.zeroandone.app.controller;
 import ir.zeroandone.app.application.address.dto.AddressDto;
 import ir.zeroandone.app.application.address.service.AddressService;
 import ir.zeroandone.app.application.sms.service.SmsService;
+import ir.zeroandone.app.domain.Attachment;
 import ir.zeroandone.app.domain.Person;
 import ir.zeroandone.app.domain.PersonRepository;
 import ir.zeroandone.app.infra.helper.RandomString;
+import org.apache.commons.lang.StringUtils;
 import org.json.simple.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import javax.validation.Valid;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/persons")
@@ -38,12 +44,29 @@ public class PersonController extends WebMvcConfigurerAdapter {
     }
 
     @RequestMapping(value = "/new", method = RequestMethod.POST)
-    public String create(@ModelAttribute("person") @Valid Person person, BindingResult bindingResult, Model model) {
+    public String create(@ModelAttribute("person") @Valid Person person, BindingResult bindingResult, @RequestParam("files") MultipartFile[] uploadfiles) {
+        String uploadedFileName = Arrays.stream(uploadfiles).map(x -> x.getOriginalFilename())
+                .filter(x -> !StringUtils.isEmpty(x)).collect(Collectors.joining(" , "));
+
         RandomString randomString = new RandomString(8);
         person.setFollowingCode(randomString.nextString());
         if (bindingResult.hasErrors()) {
             return "persons/new";
         }
+        List<Attachment> attachments = new ArrayList<>();
+        Arrays.asList(uploadfiles).forEach(multipartFile -> {
+                    try {
+                        attachments.add(new Attachment(multipartFile.getSize(), multipartFile.getContentType(),
+                                multipartFile.getOriginalFilename(), multipartFile.getName(),
+                                "", "", multipartFile.getBytes()));
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+        );
+        attachments.get(0).setTitle("Personal");
+        attachments.get(1).setTitle("NationalCard");
+        person.setAttachments(attachments);
         repository.save(person);
         String message = String.format("%s \n %s : %s", "اطلاعات شما با موفقیت ثبت شد.", "کد رهگیری شما", person.getFollowingCode());
         smsService.sendBySoap(message, person.getCellPhone());

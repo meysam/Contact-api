@@ -1,6 +1,6 @@
 <html layout:decorator="layout2">
 <div layout:fragment="content">
-    <form action="#" th:action="@{/persons/new}" th:object="${person}" method="post">
+    <form action="#" th:action="@{/persons/new}" enctype="multipart/form-data" th:object="${person}" method="post">
         <div class="row">
             <div class="form-group col-xs-3">
                 <label for="firstName">نام</label>
@@ -211,6 +211,14 @@
                     cellPhone Error
                 </div>
             </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-xs-4">
+                <label for="cellPhone">عکس </label>
+                <input type="file" title="personalImage" name="files"/></div>
+            <div class="form-group col-xs-4">
+                <label for="cellPhone">تصویر کارت ملی</label>
+                <input type="file" title="nationalCard" name="files"/></div>
         </div>
         <div class="row">
             <div class="form-group col-xs-12">

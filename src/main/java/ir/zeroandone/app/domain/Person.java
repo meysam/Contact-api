@@ -7,7 +7,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Date;
-import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -26,10 +26,10 @@ public class Person {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @OneToMany
-    @JoinTable(name="PersonAttachment",joinColumns = @JoinColumn( name="person_id"),
-            inverseJoinColumns = @JoinColumn( name="attachment_id"))
-            private Set<Attachment> attachments = new HashSet<Attachment>();
+    @OneToMany(cascade = {CascadeType.ALL,CascadeType.PERSIST,CascadeType.MERGE})
+    @JoinTable(name = "PersonAttachment", joinColumns = @JoinColumn(name = "person_id"),
+            inverseJoinColumns = @JoinColumn(name = "attachment_id"))
+    private List<Attachment> attachments;
 
     @NotNull
     @NotEmpty
@@ -267,11 +267,11 @@ public class Person {
         this.bankName = bankName;
     }
 
-    public Set<Attachment> getAttachments() {
+    public List<Attachment> getAttachments() {
         return attachments;
     }
 
-    public void setAttachments(Set<Attachment> attachments) {
+    public void setAttachments(List<Attachment> attachments) {
         this.attachments = attachments;
     }
 
