@@ -1,0 +1,110 @@
+package ir.zeroandone.app.domain;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = "Attachments")
+public class Attachment {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "attachment_id")
+    private long id;
+
+    @Column(name = "ContentLength", nullable = false)
+    private String contentLength;
+
+    @Column(name = "ContentType", nullable = false)
+    private String contentType;
+
+    @Column(name = "FileName", nullable = false)
+    private String fileName;
+
+    @Column(name = "Title", nullable = false)
+    private String title;
+
+    @Column(name = "CreatedOn", nullable = false)
+    private String createdOn;
+
+    @Column(name = "UpdatedOn", nullable = false)
+    private String updatedOn;
+
+    @Lob
+    @Column(name = "Content", nullable = false, columnDefinition = "mediumblob")
+    private byte[] content;
+
+    @ManyToOne
+    @JoinColumn(name = "person_id")
+    @JsonBackReference
+    private Person person;
+
+    public long getId() {
+        return id;
+    }
+
+    public Person getPerson() {
+        return person;
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
+    }
+
+    public String getContentLength() {
+        return contentLength;
+    }
+
+    public void setContentLength(String contentLength) {
+        this.contentLength = contentLength;
+    }
+
+    public String getContentType() {
+        return contentType;
+    }
+
+    public void setContentType(String contentType) {
+        this.contentType = contentType;
+    }
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getCreatedOn() {
+        return createdOn;
+    }
+
+    public void setCreatedOn(String createdOn) {
+        this.createdOn = createdOn;
+    }
+
+    public String getUpdatedOn() {
+        return updatedOn;
+    }
+
+    public void setUpdatedOn(String updatedOn) {
+        this.updatedOn = updatedOn;
+    }
+
+    public byte[] getContent() {
+        return content;
+    }
+
+    public void setContent(byte[] content) {
+        this.content = content;
+    }
+}

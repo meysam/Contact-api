@@ -1,4 +1,4 @@
-<html layout:decorator="layout">
+<html layout:decorator="layout2">
 <div layout:fragment="content">
     <form action="#" th:action="@{/persons/new}" th:object="${person}" method="post">
         <div class="row">
@@ -30,64 +30,57 @@
         </div>
         <div class="row">
             <div class="form-group col-xs-3">
+                <label for="englishFname">نام انگلیسی</label>
+                <input type="text" class="form-control" id="englishFname" th:field="*{englishFname}"
+                       data-validation="required"/>
+                <div class="error" th:if="${#fields.hasErrors('englishFname')}" th:errors="*{englishFname}">englishFname
+                    Error
+                </div>
+            </div>
+            <div class="form-group col-xs-3">
+                <label for="englishLname">نام خانوادگی انگلیسی</label>
+                <input type="text" class="form-control" id="englishLname" th:field="*{englishLname}"
+                       data-validation="required"/>
+                <div class="error" th:if="${#fields.hasErrors('englishLname')}" th:errors="*{englishLname}">englishLname
+                    Error
+                </div>
+            </div>
+            <div class="form-group col-xs-3">
+                <label for="postalCode">کدپستی</label>
+                <input type="text" class="form-control" id="postalCode" th:field="*{postalCode}"
+                       data-validation="required"/>
+                <div class="error" th:if="${#fields.hasErrors('postalCode')}" th:errors="*{postalCode}">postalCode
+                    Error
+                </div>
+            </div>
+            <div class="form-group col-xs-1">
                 <label for="gender">جنسیت</label>
                 <select id="gender" th:field="*{gender}" class="form-control" data-validation="required">
-                    <option selected="selected" value="">انتخاب کنید</option>
+                    <option selected="selected" value="">---</option>
                     <option value="Female">زن</option>
                     <option value="Male">مرد</option>
                 </select>
                 <div class="error" th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}">gender Error
                 </div>
             </div>
-            <div class="form-group col-xs-3">
+            <div class="form-group col-xs-2">
                 <label for="marital">وضعیت تأهل</label>
                 <select id="marital" th:field="*{marital}" class="form-control" data-validation="required">
-                    <option selected="selected" value="">انتخاب کنید</option>
+                    <option selected="selected" value="">---</option>
                     <option value="Single">مجرد</option>
                     <option value="Married">متاهل</option>
                 </select>
                 <div class="error" th:if="${#fields.hasErrors('marital')}" th:errors="*{marital}">marital Error
                 </div>
             </div>
+        </div>
+        <div class="row">
             <div class="form-group col-xs-3">
                 <label for="nationalId">کد ملی</label>
                 <input type="text" class="form-control" id="nationalId" th:field="*{nationalId}"
                        data-validation="required nid"/>
                 <div class="error" th:if="${#fields.hasErrors('nationalId')}" th:errors="*{nationalId}">FirstName
                     Error
-                </div>
-            </div>
-            <div class="form-group col-xs-3">
-                <label for="birthCertificateId">شماره شناسنامه</label>
-                <input type="text" class="form-control" id="birthCertificateId" th:field="*{birthCertificateId}"
-                       data-validation="required"/>
-                <div class="error" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">FirstName Error
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="form-group col-xs-3">
-                <label for="placeOfBirth">محل تولد</label>
-                <input type="text" class="form-control" id="placeOfBirth" th:field="*{placeOfBirth}"
-                       data-validation="required"/>
-                <div class="error" th:if="${#fields.hasErrors('placeOfBirth')}" th:errors="*{placeOfBirth}">placeOfBirth
-                    Error
-                </div>
-            </div>
-            <div class="form-group col-xs-3">
-                <label for="birthDate">تاریخ تولد</label>
-                <input type="text" class="form-control" id="birthDate" th:field="*{birthDate}" data-validation="custom"
-                       data-validation-regexp="^1[34][0-9][0-9]\/((0[1-6]\/((3[0-1])|([1-2][0-9])|(0[1-9])))|((1[0-2]|(0[7-9]))\/(30|([1-2][0-9])|(0[1-9]))))$"
-                       data-validation-error-msg="تاریخ رادرست وارد نمایید(مثال:1361/10/03 )"/>
-                <div class="error" th:if="${#fields.hasErrors('birthDate')}" th:errors="*{birthDate}">birthDate Error
-                </div>
-            </div>
-            <div class="form-group col-xs-3">
-                <label for="issueDivision">محل صدور شناسنامه</label>
-                <input type="text" class="form-control" id="issueDivision" th:field="*{issueDivision}"
-                       data-validation="required"/>
-                <div class="error" th:if="${#fields.hasErrors('issueDivision')}" th:errors="*{issueDivision}">
-                    issueDivision Error
                 </div>
             </div>
             <div class="form-group col-xs-3">
@@ -98,8 +91,42 @@
                     accountNumber Error
                 </div>
             </div>
+            <div class="form-group col-xs-3">
+                <label for="birthCertificateId">شماره شناسنامه</label>
+                <input type="text" class="form-control" id="birthCertificateId" th:field="*{birthCertificateId}"
+                       data-validation="required"/>
+                <div class="error" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">FirstName Error
+                </div>
+            </div>
+            <div class="form-group col-xs-3">
+                <label for="issueDivision">محل صدور شناسنامه</label>
+                <input type="text" class="form-control" id="issueDivision" th:field="*{issueDivision}"
+                       data-validation="required"/>
+                <div class="error" th:if="${#fields.hasErrors('issueDivision')}" th:errors="*{issueDivision}">
+                    issueDivision Error
+                </div>
+            </div>
+
         </div>
         <div class="row">
+
+            <div class="form-group col-xs-3">
+                <label for="birthDate">تاریخ تولد</label>
+                <input type="text" class="form-control" id="birthDate" th:field="*{birthDate}" data-validation="custom"
+                       data-validation-regexp="^1[34][0-9][0-9]\/((0[1-6]\/((3[0-1])|([1-2][0-9])|(0[1-9])))|((1[0-2]|(0[7-9]))\/(30|([1-2][0-9])|(0[1-9]))))$"
+                       data-validation-error-msg="تاریخ رادرست وارد نمایید(مثال:1361/10/03 )"/>
+                <div class="error" th:if="${#fields.hasErrors('birthDate')}" th:errors="*{birthDate}">birthDate Error
+                </div>
+            </div>
+            <div class="form-group col-xs-3">
+                <label for="placeOfBirth">محل تولد</label>
+                <input type="text" class="form-control" id="placeOfBirth" th:field="*{placeOfBirth}"
+                       data-validation="required"/>
+                <div class="error" th:if="${#fields.hasErrors('placeOfBirth')}" th:errors="*{placeOfBirth}">placeOfBirth
+                    Error
+                </div>
+            </div>
+
             <div class="form-group col-xs-3">
                 <label for="bankName">نام بانک</label>
                 <!--<input type="text" class="form-control" id="bankName" th:field="*{bankName}"
@@ -154,7 +181,19 @@
                     accountNumber Error
                 </div>
             </div>
-            <div class="form-group col-xs-3">
+
+        </div>
+        <div class="row">
+
+            <div class="form-group col-xs-1">
+                <label for="phone">کد تلفن </label>
+                <input type="text" class="form-control" id="phonNumberPlan" th:field="*{phonNumberPlan}"
+                       data-validation="required"/>
+                <div class="error" th:if="${#fields.hasErrors('phonNumberPlan')}" th:errors="*{phonNumberPlan}">
+                    phoneCode Error
+                </div>
+            </div>
+            <div class="form-group col-xs-2">
                 <label for="phone">تلفن </label>
                 <input type="text" class="form-control" id="phone" th:field="*{phone}"
                        data-validation="required"/>
@@ -212,5 +251,5 @@
     });
 </script>
 <script src="/bower_components/jquery-ui/jquery-ui.min.js"></script>
-<script src="../js/custom-validations.js"></script>
+<script src="/js/custom-validations.js"></script>
 

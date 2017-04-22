@@ -16,7 +16,7 @@
 
     $.formUtils.LANG = {
         errorTitle: 'ثبت فرم با مشکل مواجه شد!',
-        requiredField: 'شما همه فیلدهای ضروری را تکمیل نکرده اید',
+        requiredField: '*',
         requiredFields: 'شما فیلد ضروری را تکمیل نکرده اید',
         badTime: 'زمان درستی را وارد نکرده اید',
         badEmail: 'آدرس ایمیل را به درستی وارد نکرده اید',

@@ -7,6 +7,8 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "PersonMarketer")
@@ -24,6 +26,11 @@ public class Person {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
+    @OneToMany
+    @JoinTable(name="PersonAttachment",joinColumns = @JoinColumn( name="person_id"),
+            inverseJoinColumns = @JoinColumn( name="attachment_id"))
+            private Set<Attachment> attachments = new HashSet<Attachment>();
+
     @NotNull
     @NotEmpty
     private String firstName;
@@ -33,6 +40,12 @@ public class Person {
 
     @NotNull
     private String lastName;
+
+    @NotNull
+    private String englishFname;
+
+    @NotNull
+    private String englishLname;
 
     @NotNull
     private String fatherName;
@@ -75,7 +88,13 @@ public class Person {
     private String accountNumber;
 
     @NotNull
+    private String phonNumberPlan;
+
+    @NotNull
     private String phone;
+
+    @NotNull
+    private String postalCode;
 
     @NotNull
     private String bankName;
@@ -246,5 +265,45 @@ public class Person {
 
     public void setBankName(String bankName) {
         this.bankName = bankName;
+    }
+
+    public Set<Attachment> getAttachments() {
+        return attachments;
+    }
+
+    public void setAttachments(Set<Attachment> attachments) {
+        this.attachments = attachments;
+    }
+
+    public String getEnglishFname() {
+        return englishFname;
+    }
+
+    public void setEnglishFname(String englishFname) {
+        this.englishFname = englishFname;
+    }
+
+    public String getEnglishLname() {
+        return englishLname;
+    }
+
+    public void setEnglishLname(String englishLname) {
+        this.englishLname = englishLname;
+    }
+
+    public String getPhonNumberPlan() {
+        return phonNumberPlan;
+    }
+
+    public void setPhonNumberPlan(String phonNumberPlan) {
+        this.phonNumberPlan = phonNumberPlan;
+    }
+
+    public String getPostalCode() {
+        return postalCode;
+    }
+
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
     }
 }
