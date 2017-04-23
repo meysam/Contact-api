@@ -81,7 +81,7 @@ public class PersonController extends WebMvcConfigurerAdapter {
         person.setAttachments(attachments);
         repository.save(person);
         String message = String.format("%s \n %s : %s", "اطلاعات شما با موفقیت ثبت شد.", "کد رهگیری شما", person.getFollowingCode());
-        //smsService.sendBySoap(message, person.getCellPhone());
+        smsService.sendBySoap(message, person.getCellPhone());
         return "persons/results";
     }
 
