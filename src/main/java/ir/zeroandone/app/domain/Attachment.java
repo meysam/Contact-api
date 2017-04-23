@@ -5,8 +5,11 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Attachments")
+@Table(name = "ATTACHMENT")
 public class Attachment {
+
+    public Attachment() {
+    }
 
     public Attachment(long contentLength, String contentType, String fileName, String title, String createdOn, String updatedOn, byte[] content) {
         this.contentLength = contentLength;

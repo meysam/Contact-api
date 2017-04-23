@@ -267,7 +267,7 @@ package ir.zeroandone.app.infra.http;
 //     */
 //    public void useSimpleProxy() {
 //        String webAppAddress = "http://localhost:" + port + "/services/personservice";
-//        PersonService proxy = JAXRSClientFactory.create(webAppAddress, PersonService.class);
+//        AttachmentRepositoryImpl proxy = JAXRSClientFactory.create(webAppAddress, AttachmentRepositoryImpl.class);
 //
 //        new PersonServiceProxyClient(proxy).useService();
 //    }

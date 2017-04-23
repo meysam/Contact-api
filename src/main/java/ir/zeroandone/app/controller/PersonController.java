@@ -4,13 +4,19 @@ import ir.zeroandone.app.application.address.dto.AddressDto;
 import ir.zeroandone.app.application.address.service.AddressService;
 import ir.zeroandone.app.application.sms.service.SmsService;
 import ir.zeroandone.app.domain.Attachment;
+import ir.zeroandone.app.domain.AttachmentRepository;
 import ir.zeroandone.app.domain.Person;
 import ir.zeroandone.app.domain.PersonRepository;
 import ir.zeroandone.app.infra.helper.RandomString;
 import org.apache.commons.lang.StringUtils;
 import org.json.simple.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +25,9 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import javax.validation.Valid;
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -32,6 +40,9 @@ public class PersonController extends WebMvcConfigurerAdapter {
 
     @Autowired
     private PersonRepository repository;
+
+    @Autowired
+    private AttachmentRepository attachmentRepo;
 
     @Autowired
     private SmsService smsService;
@@ -88,12 +99,12 @@ public class PersonController extends WebMvcConfigurerAdapter {
         return "persons/list";
     }
 
-    @RequestMapping(value = "/update", method = RequestMethod.PATCH)
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
     public ModelAndView update(@ModelAttribute("person") @Valid Person person, BindingResult bindingResult, @RequestParam("files") MultipartFile[] uploadfiles) {
         long id = person.getId();
         Person person1 = repository.findOne(id);
         repository.save(person);
-        return new ModelAndView("redirect:/persons");
+        return new ModelAndView("redirect:/persons/list");
     }
 
     @RequestMapping(value = "/{id}/edit", method = RequestMethod.GET)
@@ -102,6 +113,17 @@ public class PersonController extends WebMvcConfigurerAdapter {
         Person person = repository.findOne(id);
         model.addAttribute("person", person);
         return "persons/edit";
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/attachments/{userId}/{title}", method = RequestMethod.GET, produces = MediaType.IMAGE_JPEG_VALUE)
+    public ResponseEntity<byte[]> downloadUserAvatarImage(@PathVariable Long userId, @PathVariable String title) {
+        Attachment attachment = repository.findOne(userId).getAttachments().stream().filter(att ->
+                att.getTitle().equalsIgnoreCase(title)).findFirst().orElse(null);
+        if (attachment == null)
+            return ResponseEntity.noContent().build();
+        else
+        return new ResponseEntity(attachment.getContent(), HttpStatus.ACCEPTED);
     }
 
 //    @PostMapping("/api/upload/multi/model")

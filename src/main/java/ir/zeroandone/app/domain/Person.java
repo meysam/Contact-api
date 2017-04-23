@@ -10,7 +10,7 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name = "PersonMarketer")
+@Table(name = "PERSON")
 public class Person {
 
     public Person() {
