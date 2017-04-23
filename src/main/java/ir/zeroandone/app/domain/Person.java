@@ -33,12 +33,15 @@ public class Person {
 
     @NotNull
     @NotEmpty
+    @Column(columnDefinition = "nvarchar(50)")
     private String firstName;
 
     @NotNull
+    @Column(columnDefinition = "nvarchar(50)")
     private String middleName;
 
     @NotNull
+    @Column(columnDefinition = "nvarchar(50)")
     private String lastName;
 
     @NotNull
@@ -48,55 +51,71 @@ public class Person {
     private String englishLname;
 
     @NotNull
+    @Column(columnDefinition = "nvarchar(50)")
     private String fatherName;
 
     @NotNull
+    @Column(columnDefinition = "nvarchar(50)")
     private String gender;
 
     @NotNull
+    @Column(columnDefinition = "nvarchar(50)")
     private String marital;
 
     @NationalId(message = "کد ملی صحیح وارد نمایید")
     @Size(min = 10, max = 10, message = "کد ملی باید ده رقم باشد")
     @NotNull
+    @Column(columnDefinition = "nvarchar(10)")
     private String nationalId;
 
     @NotNull
+    @Column(columnDefinition = "nvarchar(50)")
     private String birthCertificateId;
 
     @NotNull
+    @Column(columnDefinition = "nvarchar(50)")
     private String placeOfBirth;
 
     @NotNull
+    @Column(columnDefinition = "nvarchar(50)")
     private String issueDivision;
 
     @NotNull
+    @Column(columnDefinition = "nvarchar(50)")
     private String birthDate;
 
     @NotNull
+    @Column(columnDefinition = "nvarchar(300)")
     private String address;
 
     @NotNull
+    @Column(columnDefinition = "nvarchar(12)")
     private String cellPhone;
 
     @NotNull
+    @Column(columnDefinition = "nvarchar(50)")
     private String email;
 
     private String followingCode;
 
     @NotNull
+    @Column(columnDefinition = "nvarchar(15)")
     private String accountNumber;
 
     @NotNull
+    @Column(columnDefinition = "nvarchar(10)")
     private String phonNumberPlan;
 
     @NotNull
+    @Column(columnDefinition = "nvarchar(10)")
     private String phone;
 
     @NotNull
+    @Column(columnDefinition = "nvarchar(11)")
     private String postalCode;
 
     @NotNull
+    @Column(columnDefinition = "nvarchar(50)")
     private String bankName;
 
 
