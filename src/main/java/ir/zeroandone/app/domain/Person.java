@@ -8,7 +8,6 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name = "PersonMarketer")
@@ -104,7 +103,7 @@ public class Person {
 
     @NotNull
     @Column(columnDefinition = "nvarchar(10)")
-    private String phonNumberPlan;
+    private String phoneNumberPlan;
 
     @NotNull
     @Column(columnDefinition = "nvarchar(10)")
@@ -125,6 +124,14 @@ public class Person {
 
     public long getId() {
         return id;
+    }
+
+    public List<Attachment> getAttachments() {
+        return attachments;
+    }
+
+    public void setAttachments(List<Attachment> attachments) {
+        this.attachments = attachments;
     }
 
     public String getFirstName() {
@@ -149,6 +156,22 @@ public class Person {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getEnglishFname() {
+        return englishFname;
+    }
+
+    public void setEnglishFname(String englishFname) {
+        this.englishFname = englishFname;
+    }
+
+    public String getEnglishLname() {
+        return englishLname;
+    }
+
+    public void setEnglishLname(String englishLname) {
+        this.englishLname = englishLname;
     }
 
     public String getFatherName() {
@@ -199,36 +222,20 @@ public class Person {
         this.placeOfBirth = placeOfBirth;
     }
 
-    public String getBirthDate() {
-        return birthDate;
-    }
-
-    public void setBirthDate(String birthDate) {
-        this.birthDate = birthDate;
-    }
-
-    public Date getCreatedOn() {
-        return createdOn;
-    }
-
-    public void setCreatedOn(Date createdOn) {
-        this.createdOn = createdOn;
-    }
-
-    public Date getUpdatedOn() {
-        return updatedOn;
-    }
-
-    public void setUpdatedOn(Date updatedOn) {
-        this.updatedOn = updatedOn;
-    }
-
     public String getIssueDivision() {
         return issueDivision;
     }
 
     public void setIssueDivision(String issueDivision) {
         this.issueDivision = issueDivision;
+    }
+
+    public String getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(String birthDate) {
+        this.birthDate = birthDate;
     }
 
     public String getAddress() {
@@ -271,12 +278,28 @@ public class Person {
         this.accountNumber = accountNumber;
     }
 
+    public String getPhoneNumberPlan() {
+        return phoneNumberPlan;
+    }
+
+    public void setPhoneNumberPlan(String phoneNumberPlan) {
+        this.phoneNumberPlan = phoneNumberPlan;
+    }
+
     public String getPhone() {
         return phone;
     }
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getPostalCode() {
+        return postalCode;
+    }
+
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
     }
 
     public String getBankName() {
@@ -287,43 +310,19 @@ public class Person {
         this.bankName = bankName;
     }
 
-    public List<Attachment> getAttachments() {
-        return attachments;
+    public Date getCreatedOn() {
+        return createdOn;
     }
 
-    public void setAttachments(List<Attachment> attachments) {
-        this.attachments = attachments;
+    public void setCreatedOn(Date createdOn) {
+        this.createdOn = createdOn;
     }
 
-    public String getEnglishFname() {
-        return englishFname;
+    public Date getUpdatedOn() {
+        return updatedOn;
     }
 
-    public void setEnglishFname(String englishFname) {
-        this.englishFname = englishFname;
-    }
-
-    public String getEnglishLname() {
-        return englishLname;
-    }
-
-    public void setEnglishLname(String englishLname) {
-        this.englishLname = englishLname;
-    }
-
-    public String getPhonNumberPlan() {
-        return phonNumberPlan;
-    }
-
-    public void setPhonNumberPlan(String phonNumberPlan) {
-        this.phonNumberPlan = phonNumberPlan;
-    }
-
-    public String getPostalCode() {
-        return postalCode;
-    }
-
-    public void setPostalCode(String postalCode) {
-        this.postalCode = postalCode;
+    public void setUpdatedOn(Date updatedOn) {
+        this.updatedOn = updatedOn;
     }
 }

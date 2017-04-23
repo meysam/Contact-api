@@ -1,21 +1,30 @@
-<html layout:decorator="layout">
+<html layout:decorator="layout2">
 
 <div layout:fragment="content">
 
-    <a class="btn btn-primary" href="/persons/new">Add new person</a>
+    <a class="btn btn-primary" href="/persons/new">ایجاد فرد جدید</a>
 
     <table class="table table-striped" id="persons_list">
         <thead>
         <tr>
-            <th>Comments</th>
-            <th>Action</th>
+            <th>نام</th>
+            <th>نام خانوادگی</th>
+            <th>کدملی</th>
+            <th>موبایل</th>
+            <th>کد تلفن</th>
+            <th>تلفن</th>
+            <th>عملیات</th>
             <th></th>
         </tr>
         </thead>
         <tbody>
         <tr data-th-each="person : ${persons}">
             <td class="message" data-th-text="${person.firstName}"></td>
-
+            <td class="message" data-th-text="${person.lastName}"></td>
+            <td class="message" data-th-text="${person.nationalId}"></td>
+            <td class="message" data-th-text="${person.cellPhone}"></td>
+            <td class="message" data-th-text="${person.phoneNumberPlan}"></td>
+            <td class="message" data-th-text="${person.phone}"></td>
             <td>
                 <a th:href="@{'/persons/{id}/delete'(id=${person.id})}" class="delete" th:attr="name=${person.firstName}">
                         <span class="fa-stack">

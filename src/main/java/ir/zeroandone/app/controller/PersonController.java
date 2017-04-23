@@ -15,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import javax.validation.Valid;
@@ -69,7 +70,7 @@ public class PersonController extends WebMvcConfigurerAdapter {
         person.setAttachments(attachments);
         repository.save(person);
         String message = String.format("%s \n %s : %s", "اطلاعات شما با موفقیت ثبت شد.", "کد رهگیری شما", person.getFollowingCode());
-        smsService.sendBySoap(message, person.getCellPhone());
+        //smsService.sendBySoap(message, person.getCellPhone());
         return "persons/results";
     }
 
@@ -79,6 +80,28 @@ public class PersonController extends WebMvcConfigurerAdapter {
         HashMap<String, String> params = new HashMap<>();
         params.put("name", name);
         return addressService.getAddress(params);
+    }
+
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
+    public String listPersons(Model model) {
+        model.addAttribute("persons", repository.findAll());
+        return "persons/list";
+    }
+
+    @RequestMapping(value = "/update", method = RequestMethod.PATCH)
+    public ModelAndView update(@ModelAttribute("person") @Valid Person person, BindingResult bindingResult, @RequestParam("files") MultipartFile[] uploadfiles) {
+        long id = person.getId();
+        Person person1 = repository.findOne(id);
+        repository.save(person);
+        return new ModelAndView("redirect:/persons");
+    }
+
+    @RequestMapping(value = "/{id}/edit", method = RequestMethod.GET)
+    public String edit(@PathVariable long id,
+                       Model model) {
+        Person person = repository.findOne(id);
+        model.addAttribute("person", person);
+        return "persons/edit";
     }
 
 //    @PostMapping("/api/upload/multi/model")
@@ -120,11 +143,7 @@ public class PersonController extends WebMvcConfigurerAdapter {
         registry.addViewController("persons/results").setViewName("results");
     }*/
 
- /*   @RequestMapping(value = "", method = RequestMethod.GET)
-    public String listPersons(Model model) {
-        model.addAttribute("persons", repository.findAll());
-        return "persons/list";
-    }*/
+
 
 /*    @RequestMapping(value = "/{id}/delete", method = RequestMethod.GET)
     public ModelAndView delete(@PathVariable long id) {
