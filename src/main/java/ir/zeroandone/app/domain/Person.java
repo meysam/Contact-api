@@ -112,6 +112,7 @@ public class Person {
 
     @NotNull
     @Column(columnDefinition = "nvarchar(11)")
+    @Size(min = 10, max = 10, message = "کد پستی باید ده رقم باشد")
     private String postalCode;
 
     @NotNull

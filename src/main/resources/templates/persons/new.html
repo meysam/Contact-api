@@ -48,7 +48,8 @@
             <div class="form-group col-xs-3">
                 <label for="postalCode">کدپستی</label>
                 <input type="text" class="form-control" id="postalCode" th:field="*{postalCode}"
-                       data-validation="required"/>
+                       data-validation="required number length" data-validation-length="10-10"
+                       data-validation-error-msg="مقدار وارد شده باید ده رقم باشد"/>
                 <div class="error" th:if="${#fields.hasErrors('postalCode')}" th:errors="*{postalCode}">postalCode
                     Error
                 </div>
@@ -86,7 +87,7 @@
             <div class="form-group col-xs-3">
                 <label for="issueDivision">ایمیل</label>
                 <input type="text" class="form-control" id="email" th:field="*{email}"
-                       data-validation="required"/>
+                       data-validation="required email"/>
                 <div class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">
                     accountNumber Error
                 </div>
@@ -94,7 +95,8 @@
             <div class="form-group col-xs-3">
                 <label for="birthCertificateId">شماره شناسنامه</label>
                 <input type="text" class="form-control" id="birthCertificateId" th:field="*{birthCertificateId}"
-                       data-validation="required"/>
+                       data-validation="required number length" data-validation-length="1-10"
+                       data-validation-error-msg="مقدار وارد شده باید عدد باشد"/>
                 <div class="error" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">FirstName Error
                 </div>
             </div>
@@ -176,7 +178,8 @@
             <div class="form-group col-xs-3">
                 <label for="accountNumber">شماره حساب</label>
                 <input type="text" class="form-control" id="accountNumber" th:field="*{accountNumber}"
-                       data-validation="required"/>
+                       data-validation="required number length" data-validation-length="1-20"
+                       data-validation-error-msg="مقدار وارد شده باید عدد باشد"/>
                 <div class="error" th:if="${#fields.hasErrors('accountNumber')}" th:errors="*{accountNumber}">
                     accountNumber Error
                 </div>
@@ -188,7 +191,8 @@
             <div class="form-group col-xs-1">
                 <label for="phone">کد تلفن </label>
                 <input type="text" class="form-control" id="phonNumberPlan" th:field="*{phonNumberPlan}"
-                       data-validation="required"/>
+                       data-validation="required number length" data-validation-length="1-5"
+                       />
                 <div class="error" th:if="${#fields.hasErrors('phonNumberPlan')}" th:errors="*{phonNumberPlan}">
                     phoneCode Error
                 </div>
@@ -196,7 +200,8 @@
             <div class="form-group col-xs-2">
                 <label for="phone">تلفن </label>
                 <input type="text" class="form-control" id="phone" th:field="*{phone}"
-                       data-validation="required"/>
+                       data-validation="required number length" data-validation-length="1-8"
+                       data-validation-error-msg="مقدار وارد شده باید عدد باشد"/>
                 <div class="error" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}">
                     cellPhone Error
                 </div>
@@ -256,8 +261,12 @@
                 },
                 minLength: 1
             });
+        $(function () {
+            $("input:not([name*=english],[name*=email])").farsiInput();
+        });
     });
 </script>
 <script src="/bower_components/jquery-ui/jquery-ui.min.js"></script>
 <script src="/js/custom-validations.js"></script>
+<script src="/js/jquery.farsiInput.js"></script>
 
