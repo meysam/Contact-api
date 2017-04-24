@@ -305,9 +305,9 @@
             $("input:not([name*=english],[name*=email])").farsiInput();
         });
         document.getElementById("firstName").onkeyup = function () {
-            alert(document.getElementById("firstName").value);
+            //alert(document.getElementById("firstName").value);
             var x = document.getElementById("firstName");
-            document.getElementById("fname").label.innerHTML = x.value;
+            document.getElementById("fname").innerHTML = x.value;
         };
     });
 </script>
