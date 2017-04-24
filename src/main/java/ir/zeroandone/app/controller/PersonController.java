@@ -50,6 +50,11 @@ public class PersonController extends WebMvcConfigurerAdapter {
     @Autowired
     private AddressService addressService;
 
+    @RequestMapping(value = "/faq", method = RequestMethod.GET)
+    public String getFaq() {
+        return "persons/faq";
+    }
+
     @RequestMapping(value = "/new", method = RequestMethod.GET)
     public String newPerson(Person person) {
         return "persons/new";

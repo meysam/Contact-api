@@ -192,7 +192,7 @@
                 <label for="phone">کد تلفن </label>
                 <input type="text" class="form-control" id="phoneNumberPlan" th:field="*{phoneNumberPlan}"
                        data-validation="required number length" data-validation-length="1-5"
-                       />
+                />
                 <div class="error" th:if="${#fields.hasErrors('phoneNumberPlan')}" th:errors="*{phoneNumberPlan}">
                     phoneCode Error
                 </div>
@@ -239,6 +239,32 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="form-group col-xs-12">
+                <div class="alert alert-warning" role="alert">
+                    <strong>تعهد نامه بازاریابان</strong><br/>
+                    اینجانب <label id="fname">.......</label>
+                    فرزند <label id="lname">.......</label>
+                    کد ملی
+                    <label id="nid">.......</label>
+                      تعهد می سپارم
+                    صادقانه هرنوع درآمدی را برای شرکت واریز نمایم
+                    در صورت عدم رعایت ضوابط و مقررات ، و عدم رضایت مشتریان و یا شرکت از رفتار اینجانب ، شرکت می تواند
+                    مرا حذف نماید
+
+                    <div class="checkbox">
+                        <label><input name="agree" data-validation="required" type="checkbox"
+                                      data-validation-error-msg="برای ثبت نهایی نیاز به تایید تعهد نامه میباشد"
+                                      value=""/>موافقم</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--<p class="P8"><span class="T8">تعهد نامه بازاریابان</span></p>-->
+        <!--<p class="P2"><span class="T8">اینجانب     فرزند                    کد ملی   تعهد می سپارم</span></p>-->
+        <!--<p class="P2"><span class="T8">صادقانه هرنوع درآمدی را برای شرکت واریز نمایم</span></p>-->
+        <!--<p class="P2"><span class="T8">در صورت عدم رعایت ضوابط و مقررات ، و عدم رضایت مشتریان و یا شرکت از رفتار اینجانب ، شرکت می تواند مرا حذف نماید </span>-->
+        <!--</p>-->
         <button type="submit" id="submit" class="btn btn-primary">ثبت</button>
     </form>
 </div>
@@ -257,6 +283,13 @@
         modules: 'date, security,file'
     });
     $(document).ready(function () {
+
+//        $( "#lastName" ).change(function() {
+//            $( "#lname" ).val($(this).text());
+//        });
+//        $( "#nationalId" ).change(function() {
+//            $( "#nid" ).val($(this).text());
+//        });
         $('#address')
             .autocomplete({
                 source: function (request, response) {
@@ -268,7 +301,13 @@
                 minLength: 1
             });
         $(function () {
+            $("#firstName").on('change', function () {
+                alert("KJH");
+                $("#fname").val("JHKJH");
+            });
             $("input:not([name*=english],[name*=email])").farsiInput();
+
+
         });
     });
 </script>
