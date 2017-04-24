@@ -4,25 +4,25 @@
         <div class="row">
             <div class="form-group col-xs-3">
                 <label for="firstName">نام</label>
-                <input type="text" class="form-control" id="firstName" th:field="*{firstName}"
+                <input lang="fa" type="text" class="form-control" id="firstName" th:field="*{firstName}"
                        data-validation="required"/>
                 <div class="error" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">FirstName Error
                 </div>
             </div>
             <div class="form-group col-xs-3">
                 <label for="middleName">نام میانی</label>
-                <input type="text" class="form-control" id="middleName" th:field="*{middleName}"/>
+                <input lang="fa" type="text" class="form-control" id="middleName" th:field="*{middleName}"/>
             </div>
             <div class="form-group col-xs-3">
                 <label for="lastName">نام خانوادگی</label>
-                <input type="text" class="form-control" id="lastName" th:field="*{lastName}"
+                <input lang="fa" type="text" class="form-control" id="lastName" th:field="*{lastName}"
                        data-validation="required"/>
                 <div class="error" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">lastName Error
                 </div>
             </div>
             <div class="form-group col-xs-3">
                 <label for="fatherName">نام پدر</label>
-                <input type="text" class="form-control" id="fatherName" th:field="*{fatherName}"
+                <input lang="fa" type="text" class="form-control" id="fatherName" th:field="*{fatherName}"
                        data-validation="required"/>
                 <div class="error" th:if="${#fields.hasErrors('fatherName')}" th:errors="*{fatherName}">fatherName Error
                 </div>
@@ -102,7 +102,7 @@
             </div>
             <div class="form-group col-xs-3">
                 <label for="issueDivision">محل صدور شناسنامه</label>
-                <input type="text" class="form-control" id="issueDivision" th:field="*{issueDivision}"
+                <input lang="fa" type="text" class="form-control" id="issueDivision" th:field="*{issueDivision}"
                        data-validation="required"/>
                 <div class="error" th:if="${#fields.hasErrors('issueDivision')}" th:errors="*{issueDivision}">
                     issueDivision Error
@@ -122,7 +122,7 @@
             </div>
             <div class="form-group col-xs-3">
                 <label for="placeOfBirth">محل تولد</label>
-                <input type="text" class="form-control" id="placeOfBirth" th:field="*{placeOfBirth}"
+                <input lang="fa" type="text" class="form-control" id="placeOfBirth" th:field="*{placeOfBirth}"
                        data-validation="required"/>
                 <div class="error" th:if="${#fields.hasErrors('placeOfBirth')}" th:errors="*{placeOfBirth}">placeOfBirth
                     Error
@@ -234,7 +234,8 @@
         <div class="row">
             <div class="form-group col-xs-12">
                 <label for="address">آدرس</label>
-                <input type="text" class="form-control" id="address" th:field="*{address}" data-validation="required"/>
+                <input lang="fa" type="text" class="form-control" id="address" th:field="*{address}"
+                       data-validation="required"/>
                 <div class="error" th:if="${#fields.hasErrors('address')}" th:errors="*{address}">address Error
                 </div>
             </div>
@@ -282,8 +283,8 @@
         lang: 'fa',
         modules: 'date, security,file'
     });
-    $(document).ready(function () {
 
+    $(document).ready(function () {
 //        $( "#lastName" ).change(function() {
 //            $( "#lname" ).val($(this).text());
 //        });
@@ -301,14 +302,13 @@
                 minLength: 1
             });
         $(function () {
-            $("#firstName").on('change', function () {
-                alert("KJH");
-                $("#fname").val("JHKJH");
-            });
             $("input:not([name*=english],[name*=email])").farsiInput();
-
-
         });
+        document.getElementById("firstName").onkeyup = function () {
+            alert(document.getElementById("firstName").value);
+            var x = document.getElementById("firstName");
+            document.getElementById("fname").label.innerHTML = x.value;
+        };
     });
 </script>
 <script src="/bower_components/jquery-ui/jquery-ui.min.js"></script>
