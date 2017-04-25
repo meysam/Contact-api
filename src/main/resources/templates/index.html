@@ -1,0 +1,301 @@
+<html layout:decorator="layout2">
+<div layout:fragment="content">
+
+    <style type="text/css">
+        @page {
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+            empty-cells: show
+        }
+
+        td, th {
+            vertical-align: top;
+            font-size: 12pt;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            clear: both
+        }
+
+        ol, ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        /*"li span.odfLiEnd" -IE7 issue*/
+        li span. {
+            clear: both;
+            line-height: 0;
+            width: 0;
+            height: 0;
+            margin: 0;
+            padding: 0;
+        }
+
+        span.footnodeNumber {
+            padding-right: 1em;
+        }
+
+        span.annotation_style_by_filter {
+            font-size: 95%;
+            background-color: #fff000;
+            margin: 0;
+            border: 0;
+            padding: 0;
+        }
+
+        * {
+            margin: 0;
+        }
+
+        .Footer {
+            font-size: 16pt;
+            font-weight: bold;
+            line-height: 100%;
+            margin-bottom: 0in;
+            margin-top: 0in;
+            writing-mode: rl-tb;
+        }
+
+        .Header {
+            font-size: 16pt;
+            font-weight: bold;
+            line-height: 100%;
+            margin-bottom: 0in;
+            margin-top: 0in;
+
+            writing-mode: rl-tb;
+        }
+
+        .P1 {
+            font-size: 16pt;
+            font-weight: bold;
+            line-height: 100%;
+            margin-bottom: 0in;
+            margin-top: 0in;
+            text-align: center ! important;
+            writing-mode: rl-tb;
+        }
+
+        .P10 {
+            font-size: 16pt;
+            font-weight: bold;
+            line-height: 100%;
+            margin-bottom: 0.139in;
+            margin-top: 0in;
+            writing-mode: rl-tb;
+        }
+
+        .P2 {
+            font-size: 16pt;
+            font-weight: bold;
+            line-height: 100%;
+            margin-bottom: 0.139in;
+            margin-top: 0in;
+            text-align: justify ! important;
+            writing-mode: rl-tb;
+        }
+
+        .P3 {
+            font-size: 16pt;
+            font-weight: bold;
+            line-height: 100%;
+            margin-bottom: 0.139in;
+            margin-top: 0in;
+            text-align: justify ! important;
+            writing-mode: rl-tb;
+        }
+
+        .P4 {
+            font-size: 16pt;
+            font-weight: bold;
+            line-height: 100%;
+            margin-bottom: 0.139in;
+            margin-top: 0in;
+            text-align: justify ! important;
+            writing-mode: rl-tb;
+            color: #ff0000;
+        }
+
+        .P5 {
+            font-size: 16pt;
+            font-weight: bold;
+            line-height: 100%;
+            margin-bottom: 0.139in;
+            margin-top: 0in;
+            text-align: justify ! important;
+            writing-mode: rl-tb;
+            margin-left: 1in;
+            margin-right: 0in;
+            text-indent: 0in;
+        }
+
+        .P6 {
+            font-size: 16pt;
+            font-weight: bold;
+            line-height: 115%;
+            margin-bottom: 0.139in;
+            margin-top: 0in;
+            writing-mode: lr-tb;
+        }
+
+        .P7 {
+            font-size: 16pt;
+            font-weight: bold;
+            line-height: 115%;
+            margin-bottom: 0.139in;
+            margin-top: 0in;
+            writing-mode: lr-tb;
+        }
+
+        .P8 {
+            font-size: 16pt;
+            font-weight: bold;
+            line-height: 100%;
+            margin-bottom: 0.139in;
+            margin-top: 0in;
+            text-align: justify ! important;
+            writing-mode: rl-tb;
+        }
+
+        .P9 {
+            font-size: 16pt;
+            font-weight: bold;
+            line-height: 100%;
+            margin-bottom: 0.139in;
+            margin-top: 0in;
+            text-align: justify ! important;
+            writing-mode: rl-tb;
+        }
+
+        .Standard {
+            font-size: 16pt;
+            writing-mode: rl-tb;
+            margin-top: 0in;
+            margin-bottom: 0.139in;
+            line-height: 100%;
+            font-weight: bold;
+        }
+
+        .T1 {
+            color: #0070c0;
+        }
+
+        .T10 {
+            color: #0070c0;
+        }
+
+        .T12 {
+            color: #00b050;
+        }
+
+        .T3 {
+            color: #ff0000;
+        }
+
+        .T4 {
+            color: #ff0000;
+        }
+
+        .T5 {
+            color: #ff0000;
+            font-size: 36pt;
+        }
+
+        .T6 {
+            color: #ff0000;
+            font-size: 14pt;
+        }
+
+        .T7 {
+            color: #ff0000;
+            font-size: 48pt;
+        }
+
+        .T8 {
+        }
+
+        .T9 {
+            color: #7030a0;
+        }
+
+    </style>
+
+    <p class="P10"><span class="T2">بسم الله الرحمن الرحيم</span></p>
+    <p class="Standard"><a id="_Toc393583421"/><span class="T3"> </span><span class="T3">بازاریاب آسان</span></p>
+    <p class="P2"><span class="T8">سلام بر شما و همه دوستانی که می خواهند شغل شرافتمندانه داشته باشند </span></p>
+    <p class="P2"><span class="T8">شرکت مهندسی توسعه طرح و پردازش صفر و یک جهت جذب راه اندازی سایت برای </span><span
+            class="T9">داوطلبان انتخابات شوراهای شهر و روستا </span><span class="T8">، از جوانان عزیزی که دارای روابط عمومی قوی ، هستند درخواست همکاری دارد</span>
+    </p>
+    <p class="P2"><span class="T4">برای این همکاری صداقت مهمترین رکن است و هر میزان شما همکاری نمائید درآمدتان بیشتر می شود و در اینده نیز ، پروژه های دیگری را در خدمت شما خواهیم بود و از شما استفاده خواهیم کرد</span>
+    </p>
+    <p class="P3"> </p>
+    <p class="P2"><span class="T8">هزینه هر یک سایت برای هر کاندیدا مبلغ 1 میلیون تومان خواهد بود</span></p>
+    <p class="P3"> </p>
+    <p class="P2"><span class="T8"> </span></p>
+    <p class="P2"><span class="T5">تعهدات این شرکت در قبال کاندیداها</span><span class="T6"> </span></p>
+    <p class="P2"><span class="T4">عبارت است از :</span></p>
+    <p class="P5"><span class="T8">ثبت دامین دلخواه کاندیدا</span></p>
+    <p class="P5"><span class="T8">راه اندازی سایت</span></p>
+    <p class="P5"><span class="T8">هاستینگ</span></p>
+    <p class="P5"><span class="T8">نگهداری به مدت دوماه </span></p>
+    <p class="P2"><span class="T8">مبلغ سایت ، توسط بازاریابان دریافت و پس از واریز سهم شرکت به حساب شرکت ، و ثبت اسم و مشخصات داوطلب ، ظرف مدت 48 ساعت راه اندازی خواهد شد </span>
+    </p>
+    <p class="P2"><span class="T10">چنانچه کاندیدا بخواهد سایت را ادامه دهد ، هزینه پشتیبانی یک ساله 100 هزار تومان خواهد بود</span>
+    </p>
+    <p class="P3"> </p>
+    <p class="P4"> </p>
+    <p class="P2"><span class="T7">شیوه ثبت نام بازار یابان</span></p><br/><br/>
+    <p class="P2"><span
+            class="T8">این اشخاص لازم است به آدرس رفته و کلیه اطلاعات را به صورت دقیق وارد نمایند</span><span
+            class="T4"> </span></p>
+    <p class="P2"><span class="T4">شرکت پس از بررسی های لازم ؛ لیست اشخاص واجد شرایط را اعلام خواهد کرد</span></p>
+    <p class="P2"><span class="T8">تنها کسانی بازاریاب خواهند بود که اسامی و مشخصات آنان در این سایت اعلام شود</span>
+    </p>
+    <p class="P2"><span class="T4">اعلام اسامی و مشخصات ، همواره به روز رسانی ، کسر و اضافه خواهد شد </span></p>
+    <p class="P2"><span class="T12">ارزیابی مشتریان از رفتار بازاریابان ، یکی از فاکتورهای اساسی همکاری خواهد بود</span>
+    </p>
+    <p class="P2"><span class="T9">توجه فرمائید : شرکت می تواند با صلاحدید خود در هر زمان قطع رابطه نماید </span></p>
+    <p class="P3"/>
+    <p class="P3"> </p>
+    <p class="P2"><span class="T7">دستمزد بازار یابان</span><a id="_GoBack"/></p>
+    <p class="P3"> </p>
+    <p class="P3"> </p>
+    <p class="P2"><span class="T8">جذب </span><span class="T4">اولین</span><span class="T8"> مشتری 20 درصد برای شما است (دو میلیون ریال را بر می دارید و هشت میلیون ریال را به حساب شرکت واریز می کنی )</span>
+    </p>
+    <p class="P2"><span class="T4">دومین و سومین </span><span class="T8">مشتری 25 درصد بازاریاب ، 75 درصد شرکت </span>
+    </p>
+    <p class="P2"><span class="T4">چهارمین و پنجمین </span><span
+            class="T8">مشتری 30 درصد بازاریاب ، 70 درصد شرکت </span></p>
+    <p class="P2"><span class="T4">از ششمین مشتری </span><span class="T8">به بعد 35 درصد بازاریاب ، 65 درصد شرکت</span>
+    </p>
+    <p class="P2"><span class="T8">همواره </span><span class="T4">مضرب دهمین </span><span class="T8">مشتری ، 100 درصد بازاریاب ، 0 درصد شرکت (رایگان برای بازاریاب)</span>
+    </p>
+    <p class="P3"> </p>
+    <p class="P2"><span
+            class="T8">پس تلاش نمائید تا بدون سرمایه گذاری ، و فقط با صداقت و تلاش، درآمد خوبی داشته باشید </span></p>
+    <p class="P2"><span class="T4">تاکید می کنیم ، فقط صداقت و تلاش راهگشا است </span></p>
+    <br/>
+    <br/>
+    <a class="btn btn-primary btn-lg" href="/persons/new" role="button">شروع ثبت نام در بارایاب آسان</a>
+    <br/>
+    <br/>
+
+
+    <!--<p class="P8"><span class="T8">تعهد نامه بازاریابان</span></p>-->
+    <!--<p class="P2"><span class="T8">اینجانب     فرزند                    کد ملی   تعهد می سپارم</span></p>-->
+    <!--<p class="P2"><span class="T8">صادقانه هرنوع درآمدی را برای شرکت واریز نمایم</span></p>-->
+    <!--<p class="P2"><span class="T8">در صورت عدم رعایت ضوابط و مقررات ، و عدم رضایت مشتریان و یا شرکت از رفتار اینجانب ، شرکت می تواند مرا حذف نماید </span>-->
+    <!--</p>-->
+
+</div>
+</html>

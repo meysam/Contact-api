@@ -33,8 +33,7 @@ public class Application extends WebMvcConfigurerAdapter {
     }
 
     @Bean(name = "validator")
-    public LocalValidatorFactoryBean validator()
-    {
+    public LocalValidatorFactoryBean validator() {
         LocalValidatorFactoryBean bean = new LocalValidatorFactoryBean();
         bean.setValidationMessageSource(messageSource);
         return bean;
