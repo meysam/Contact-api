@@ -10,7 +10,7 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name = "PERSON")
+@Table(name = "PERSON",uniqueConstraints ={@UniqueConstraint(columnNames = "nationalId")})
 public class Person {
 
     public Person() {
@@ -84,8 +84,8 @@ public class Person {
     private String birthDate;
 
     @NotNull
-    @Column(columnDefinition = "nvarchar(300)")
-    private String address;
+    @OneToOne(cascade = CascadeType.ALL)
+    private Address address;
 
     @NotNull
     @Column(columnDefinition = "nvarchar(12)")
@@ -238,11 +238,11 @@ public class Person {
         this.birthDate = birthDate;
     }
 
-    public String getAddress() {
+    public Address getAddress() {
         return address;
     }
 
-    public void setAddress(String address) {
+    public void setAddress(Address address) {
         this.address = address;
     }
 

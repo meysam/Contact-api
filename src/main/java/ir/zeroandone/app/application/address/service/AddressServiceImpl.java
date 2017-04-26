@@ -10,16 +10,21 @@ import java.util.HashMap;
 import java.util.List;
 
 @Component
-public class AddressServiceImpl implements AddressService{
+public class AddressServiceImpl implements AddressService {
 
     @Autowired
     AddressIntegrationService service;
 
     @Override
-    public List<String> getAddress(HashMap<String,String> params) throws Exception {
+    public List<String> getAddress(HashMap<String, String> params) throws Exception {
         List<AddressDto> addresses = service.getAddress(params);
-        List<String> addressList=new ArrayList<>();
+        List<String> addressList = new ArrayList<>();
         addresses.forEach(addressDto -> addressList.add(addressDto.getValue()));
         return addressList;
+    }
+
+    @Override
+    public List<AddressDto> getListAddress(HashMap<String, String> params) throws Exception {
+        return service.getAddress(params);
     }
 }

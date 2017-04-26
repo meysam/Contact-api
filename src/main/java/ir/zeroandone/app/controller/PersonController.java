@@ -98,6 +98,14 @@ public class PersonController extends WebMvcConfigurerAdapter {
         return addressService.getAddress(params);
     }
 
+    @RequestMapping(value = "v2/address", method = RequestMethod.GET)
+    public @ResponseBody
+    List<AddressDto> getListAddress(@RequestParam(value = "name", required = false, defaultValue = "Stranger") String name) throws Exception {
+        HashMap<String, String> params = new HashMap<>();
+        params.put("name", name);
+        return addressService.getListAddress(params);
+    }
+
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String listPersons(Model model) {
         model.addAttribute("persons", repository.findAll());

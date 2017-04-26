@@ -4,25 +4,25 @@
         <div class="row">
             <div class="form-group col-xs-3">
                 <label for="firstName">نام</label>
-                <input type="text" class="form-control" id="firstName" th:field="*{firstName}"
+                <input lang="fa" type="text" class="form-control" id="firstName" th:field="*{firstName}"
                        data-validation="required"/>
                 <div class="error" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">FirstName Error
                 </div>
             </div>
             <div class="form-group col-xs-3">
                 <label for="middleName">نام میانی</label>
-                <input type="text" class="form-control" id="middleName" th:field="*{middleName}"/>
+                <input lang="fa" type="text" class="form-control" id="middleName" th:field="*{middleName}"/>
             </div>
             <div class="form-group col-xs-3">
                 <label for="lastName">نام خانوادگی</label>
-                <input type="text" class="form-control" id="lastName" th:field="*{lastName}"
+                <input lang="fa" type="text" class="form-control" id="lastName" th:field="*{lastName}"
                        data-validation="required"/>
                 <div class="error" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">lastName Error
                 </div>
             </div>
             <div class="form-group col-xs-3">
                 <label for="fatherName">نام پدر</label>
-                <input type="text" class="form-control" id="fatherName" th:field="*{fatherName}"
+                <input lang="fa" type="text" class="form-control" id="fatherName" th:field="*{fatherName}"
                        data-validation="required"/>
                 <div class="error" th:if="${#fields.hasErrors('fatherName')}" th:errors="*{fatherName}">fatherName Error
                 </div>
@@ -102,7 +102,7 @@
             </div>
             <div class="form-group col-xs-3">
                 <label for="issueDivision">محل صدور شناسنامه</label>
-                <input type="text" class="form-control" id="issueDivision" th:field="*{issueDivision}"
+                <input lang="fa" type="text" class="form-control" id="issueDivision" th:field="*{issueDivision}"
                        data-validation="required"/>
                 <div class="error" th:if="${#fields.hasErrors('issueDivision')}" th:errors="*{issueDivision}">
                     issueDivision Error
@@ -122,7 +122,7 @@
             </div>
             <div class="form-group col-xs-3">
                 <label for="placeOfBirth">محل تولد</label>
-                <input type="text" class="form-control" id="placeOfBirth" th:field="*{placeOfBirth}"
+                <input lang="fa" type="text" class="form-control" id="placeOfBirth" th:field="*{placeOfBirth}"
                        data-validation="required"/>
                 <div class="error" th:if="${#fields.hasErrors('placeOfBirth')}" th:errors="*{placeOfBirth}">placeOfBirth
                     Error
@@ -220,13 +220,13 @@
         <div class="row">
             <div class="form-group col-xs-4">
                 <label for="cellPhone">عکس </label>
-                <input data-validation="mime size"
+                <input data-validation="required mime size"
                        data-validation-allowing="jpg, png"
                        data-validation-max-size="200KB"
                        type="file" title="personalImage" name="files"/></div>
             <div class="form-group col-xs-4">
                 <label for="cellPhone">تصویر کارت ملی</label>
-                <input data-validation="mime size"
+                <input data-validation="required mime size"
                        data-validation-allowing="jpg, png"
                        data-validation-max-size="200KB"
                        type="file" title="nationalCard" name="files"/></div>
@@ -241,48 +241,166 @@
                      th:src="${'/persons/attachments/'+(id)+'/NationalCard'}" th:alt="*{attachments[1].title}"/>
             </div>
         </div>
-        <div class="row">
-            <div class="form-group col-xs-12">
-                <label for="address">آدرس</label>
-                <input type="text" class="form-control" id="address" th:field="*{address}" data-validation="required"/>
-                <div class="error" th:if="${#fields.hasErrors('address')}" th:errors="*{address}">address Error
+
+        <div class="panel panel-info">
+            <div class="panel-heading"><h3 class="panel-title">اطلاعات اولیه آدرس</h3></div>
+            <div class="panel-body">
+                <div class="alert alert-danger" role="alert"><span>توجه! </span>
+                    <a id="search-address" href="#"> برای انتخاب مکان از درختواره تقسیمات کشوری کلیک کنید...</a>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-xs-3">
+                        <label for="address.country">کشور</label>
+                        <input lang="fa" type="text" class="form-control" id="address.country"
+                               th:field="*{address.country}"
+                               data-validation="required" th:disabled="disabled"/>
+                        <div class="error" th:if="${#fields.hasErrors('address.country')}"
+                             th:errors="*{address.country}">address Error
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-3">
+                        <label for="address.ostan">استان</label>
+                        <input lang="fa" type="text" class="form-control" id="address.ostan" th:field="*{address.ostan}"
+                               data-validation="required" th:disabled="disabled"/>
+                        <div class="error" th:if="${#fields.hasErrors('address.ostan')}" th:errors="*{address.ostan}">
+                            address Error
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-3">
+                        <label for="address.shahrestan">شهرستان</label>
+                        <input lang="fa" type="text" class="form-control" id="address.shahrestan"
+                               th:field="*{address.shahrestan}"
+                               data-validation="required" th:disabled="disabled"/>
+                        <div class="error" th:if="${#fields.hasErrors('address.shahrestan')}"
+                             th:errors="*{address.shahrestan}">address
+                            Error
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-3">
+                        <label for="address.bakhsh">بخش</label>
+                        <input lang="fa" type="text" class="form-control" id="address.bakhsh"
+                               th:field="*{address.bakhsh}" th:disabled="disabled" />
+                        <div class="error" th:if="${#fields.hasErrors('address.bakhsh')}" th:errors="*{address.bakhsh}">
+                            address Error
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-xs-3">
+                        <label for="address.dehestan">دهستان</label>
+                        <input lang="fa" type="text" class="form-control" id="address.dehestan"
+                               th:field="*{address.dehestan}" th:disabled="disabled" />
+                        <div class="error" th:if="${#fields.hasErrors('address.dehestan')}"
+                             th:errors="*{address.dehestan}">address
+                            Error
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-3">
+                        <label for="address.dehyari">روستا</label>
+                        <input lang="fa" type="text" class="form-control" id="address.dehyari"
+                               th:field="*{address.dehyari}"  th:disabled="disabled" />
+                        <div class="error" th:if="${#fields.hasErrors('address.dehyari')}"
+                             th:errors="*{address.dehyari}">address Error
+                        </div>
+                    </div>
+                    <!--<div class="form-group col-xs-3">-->
+                    <!--<label for="address.type">نوع منطقه</label>-->
+                    <!--<input lang="fa" type="text" class="form-control" id="address.type" th:field="*{address.type}"-->
+                    <!--data-validation="required"/>-->
+                    <!--<div class="error" th:if="${#fields.hasErrors('address.type')}" th:errors="*{address.type}">-->
+                    <!--address Error-->
+                    <!--</div>-->
+                    <!--</div>-->
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="form-group col-xs-12">
+                <label for="address.localAddress">جزئیات آدرس</label>
+                <input lang="fa" type="text" class="form-control" id="address.localAddress"
+                       th:field="*{address.localAddress}"
+                       data-validation="required"/>
+                <div class="error" th:if="${#fields.hasErrors('address.localAddress')}"
+                     th:errors="*{address.localAddress}">address Error
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-xs-12">
+                <div class="alert alert-warning" role="alert">
+                    <strong>تعهد نامه بازاریابان</strong><br/>
+                    اینجانب <label id="fname">.......</label>
+                    فرزند <label id="lname">.......</label>
+                    کد ملی
+                    <label id="nid">.......</label>
+                      تعهد می سپارم
+                    صادقانه هرنوع درآمدی را برای شرکت واریز نمایم
+                    در صورت عدم رعایت ضوابط و مقررات ، و عدم رضایت مشتریان و یا شرکت از رفتار اینجانب ، شرکت می تواند
+                    مرا حذف نماید
+
+                    <div class="checkbox">
+                        <label><input name="agree" data-validation="required" type="checkbox"
+                                      data-validation-error-msg="برای ثبت نهایی نیاز به تایید تعهد نامه میباشد"
+                                      value=""/>موافقم</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--<p class="P8"><span class="T8">تعهد نامه بازاریابان</span></p>-->
+        <!--<p class="P2"><span class="T8">اینجانب     فرزند                    کد ملی   تعهد می سپارم</span></p>-->
+        <!--<p class="P2"><span class="T8">صادقانه هرنوع درآمدی را برای شرکت واریز نمایم</span></p>-->
+        <!--<p class="P2"><span class="T8">در صورت عدم رعایت ضوابط و مقررات ، و عدم رضایت مشتریان و یا شرکت از رفتار اینجانب ، شرکت می تواند مرا حذف نماید </span>-->
+        <!--</p>-->
         <button type="submit" id="submit" class="btn btn-primary">ثبت</button>
     </form>
+    <!-- Modal -->
+    <div class="modal fade" id="modal-search-address" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">جستجوی محل</h4>
+                </div>
+                <div class="modal-body">
+                    <ul>
+                        <li>کاربر گرامی، برای جستجوی محل مورد نظر کافیست تا نام آن را در محل مورد نظر نوشته و از میان
+                            لیست انتخاب کنید.
+                        </li>
+                        <li><span class="auto-style1"><strong>توجه توجه
+
+                : </strong></span><span class="auto-style2"><strong>انتخاب شهر بسیار مهم است</strong></span>
+                            <br/>
+                            ابا دقت این موارد را توجه فرمایید
+
+                            همچنین برای محدود کردن بازه جستجو می توانید نام محل ها را با کاراکتر "/" جدا کنید، مانند :
+                            <br/>
+                            <span style="color: red;">" تهران/شميرانات/لواسانات "</span>
+                        </li>
+                        <!--<li>برای جستجوی دقیق ، مکان جغرافیایی خود را در موارد زیر انتخاب نموده و سپس اقدام به جستجو-->
+                        <!--نمایید-->
+                        <!--</li>-->
+                    </ul>
+                    <label for="modal-address">جستجوی محل</label>
+                    <input lang="fa" type="text" class="form-control" id="modal-address"/>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">بازگشت</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
 </div>
 </html>
-<script>
-    $.formUtils.addValidator({
-        name: 'nid',
-        validatorFunction: function (value, $el, config, language, $form) {
-            return validate_nid(value);
-        },
-        errorMessage: 'کد ملی صحیح وارد نمایید',
-        errorMessageKey: 'badNid'
-    });
-    $.validate({
-        lang: 'fa',
-        modules: 'date, security,file'
-    });
-    $(document).ready(function () {
-        $('#address')
-            .autocomplete({
-                source: function (request, response) {
-                    $.get('/persons/address', {name: document.getElementById('address').value},
-                        function (data) {
-                            response(data);
-                        })
-                },
-                minLength: 1
-            });
-        $(function () {
-            $("input:not([name*=english],[name*=email])").farsiInput();
-        });
-    });
-</script>
+
+<script src="/js/page-js.js"></script>
 <script src="/bower_components/jquery-ui/jquery-ui.min.js"></script>
 <script src="/js/custom-validations.js"></script>
 <script src="/js/jquery.farsiInput.js"></script>
+
+
+
 
