@@ -1,4 +1,4 @@
-package ir.zeroandone.app.domain;
+package ir.zeroandone.app.domain.person.model;
 
 import ir.zeroandone.app.domain.validator.NationalId;
 import org.hibernate.validator.constraints.NotEmpty;

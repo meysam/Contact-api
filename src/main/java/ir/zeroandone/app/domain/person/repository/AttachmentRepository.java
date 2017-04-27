@@ -1,10 +1,7 @@
-package ir.zeroandone.app.domain;
+package ir.zeroandone.app.domain.person.repository;
 
-import org.springframework.data.jpa.repository.Query;
+import ir.zeroandone.app.domain.person.model.Attachment;
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.data.repository.query.Param;
-
-import java.util.stream.Stream;
 
 public interface AttachmentRepository extends CrudRepository<Attachment,Long> {
    /* @Query(value = "select a from Attachment as a inner join Person as p where p.id = :userId and a.title = :title")

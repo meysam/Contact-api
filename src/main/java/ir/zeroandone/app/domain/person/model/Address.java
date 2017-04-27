@@ -1,4 +1,4 @@
-package ir.zeroandone.app.domain;
+package ir.zeroandone.app.domain.person.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
