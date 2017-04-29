@@ -1,238 +1,320 @@
 <html layout:decorator="layout2">
 <div layout:fragment="content">
     <form action="#" th:action="@{/persons/new}" enctype="multipart/form-data" th:object="${person}" method="post">
-        <div class="row">
-            <div class="form-group col-xs-3">
-                <label for="firstName">نام</label>
-                <input lang="fa" type="text" class="form-control" id="firstName" th:field="*{firstName}"
-                       data-validation="required"/>
-                <div class="error" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">FirstName Error
+        <div class="panel panel-info">
+            <div class="panel-heading"><h3 class="panel-title">اطلاعات فردی</h3></div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="form-group col-xs-3">
+                        <label for="firstName">نام</label>
+                        <input lang="fa" type="text" class="form-control" id="firstName" th:field="*{firstName}"
+                               data-validation="required"/>
+                        <div class="error" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">FirstName
+                            Error
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-3">
+                        <label for="middleName">نام میانی</label>
+                        <input lang="fa" type="text" class="form-control" id="middleName" th:field="*{middleName}"/>
+                    </div>
+                    <div class="form-group col-xs-3">
+                        <label for="lastName">نام خانوادگی</label>
+                        <input lang="fa" type="text" class="form-control" id="lastName" th:field="*{lastName}"
+                               data-validation="required"/>
+                        <div class="error" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">lastName
+                            Error
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-3">
+                        <label for="fatherName">نام پدر</label>
+                        <input lang="fa" type="text" class="form-control" id="fatherName" th:field="*{fatherName}"
+                               data-validation="required"/>
+                        <div class="error" th:if="${#fields.hasErrors('fatherName')}" th:errors="*{fatherName}">
+                            fatherName Error
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="form-group col-xs-3">
-                <label for="middleName">نام میانی</label>
-                <input lang="fa" type="text" class="form-control" id="middleName" th:field="*{middleName}"/>
-            </div>
-            <div class="form-group col-xs-3">
-                <label for="lastName">نام خانوادگی</label>
-                <input lang="fa" type="text" class="form-control" id="lastName" th:field="*{lastName}"
-                       data-validation="required"/>
-                <div class="error" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">lastName Error
+                <div class="row">
+                    <div class="form-group col-xs-3">
+                        <label for="englishFname">نام انگلیسی</label>
+                        <input lang="en" type="text" class="form-control" id="englishFname" th:field="*{englishFname}"
+                               data-validation="required"/>
+                        <div class="error" th:if="${#fields.hasErrors('englishFname')}" th:errors="*{englishFname}">
+                            englishFname
+                            Error
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-3">
+                        <label for="englishLname">نام خانوادگی انگلیسی</label>
+                        <input lang="en" type="text" class="form-control" id="englishLname" th:field="*{englishLname}"
+                               data-validation="required"/>
+                        <div class="error" th:if="${#fields.hasErrors('englishLname')}" th:errors="*{englishLname}">
+                            englishLname
+                            Error
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-3">
+                        <label for="postalCode">کدپستی</label>
+                        <input type="text" class="form-control" id="postalCode" th:field="*{postalCode}"
+                               data-validation="required number length" data-validation-length="10-10"
+                               data-validation-error-msg="مقدار وارد شده باید ده رقم باشد"/>
+                        <div class="error" th:if="${#fields.hasErrors('postalCode')}" th:errors="*{postalCode}">
+                            postalCode
+                            Error
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-1">
+                        <label for="gender">جنسیت</label>
+                        <select id="gender" th:field="*{gender}" class="form-control" data-validation="required">
+                            <option selected="selected" value="">---</option>
+                            <option value="Female">زن</option>
+                            <option value="Male">مرد</option>
+                        </select>
+                        <div class="error" th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}">gender Error
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-2">
+                        <label for="marital">وضعیت تأهل</label>
+                        <select id="marital" th:field="*{marital}" class="form-control" data-validation="required">
+                            <option selected="selected" value="">---</option>
+                            <option value="Single">مجرد</option>
+                            <option value="Married">متاهل</option>
+                        </select>
+                        <div class="error" th:if="${#fields.hasErrors('marital')}" th:errors="*{marital}">marital Error
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="form-group col-xs-3">
-                <label for="fatherName">نام پدر</label>
-                <input lang="fa" type="text" class="form-control" id="fatherName" th:field="*{fatherName}"
-                       data-validation="required"/>
-                <div class="error" th:if="${#fields.hasErrors('fatherName')}" th:errors="*{fatherName}">fatherName Error
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="form-group col-xs-3">
-                <label for="englishFname">نام انگلیسی</label>
-                <input lang="en" type="text" class="form-control" id="englishFname" th:field="*{englishFname}"
-                       data-validation="required"/>
-                <div class="error" th:if="${#fields.hasErrors('englishFname')}" th:errors="*{englishFname}">englishFname
-                    Error
-                </div>
-            </div>
-            <div class="form-group col-xs-3">
-                <label for="englishLname">نام خانوادگی انگلیسی</label>
-                <input lang="en" type="text" class="form-control" id="englishLname" th:field="*{englishLname}"
-                       data-validation="required"/>
-                <div class="error" th:if="${#fields.hasErrors('englishLname')}" th:errors="*{englishLname}">englishLname
-                    Error
-                </div>
-            </div>
-            <div class="form-group col-xs-3">
-                <label for="postalCode">کدپستی</label>
-                <input type="text" class="form-control" id="postalCode" th:field="*{postalCode}"
-                       data-validation="required number length" data-validation-length="10-10"
-                       data-validation-error-msg="مقدار وارد شده باید ده رقم باشد"/>
-                <div class="error" th:if="${#fields.hasErrors('postalCode')}" th:errors="*{postalCode}">postalCode
-                    Error
-                </div>
-            </div>
-            <div class="form-group col-xs-1">
-                <label for="gender">جنسیت</label>
-                <select id="gender" th:field="*{gender}" class="form-control" data-validation="required">
-                    <option selected="selected" value="">---</option>
-                    <option value="Female">زن</option>
-                    <option value="Male">مرد</option>
-                </select>
-                <div class="error" th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}">gender Error
-                </div>
-            </div>
-            <div class="form-group col-xs-2">
-                <label for="marital">وضعیت تأهل</label>
-                <select id="marital" th:field="*{marital}" class="form-control" data-validation="required">
-                    <option selected="selected" value="">---</option>
-                    <option value="Single">مجرد</option>
-                    <option value="Married">متاهل</option>
-                </select>
-                <div class="error" th:if="${#fields.hasErrors('marital')}" th:errors="*{marital}">marital Error
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="form-group col-xs-3">
-                <label for="nationalId">کد ملی</label>
-                <input type="text" class="form-control" id="nationalId" th:field="*{nationalId}"
-                       data-validation="required nid"/>
-                <div class="error" th:if="${#fields.hasErrors('nationalId')}" th:errors="*{nationalId}">FirstName
-                    Error
-                </div>
-            </div>
-            <div class="form-group col-xs-3">
-                <label for="issueDivision">ایمیل</label>
-                <input type="text" class="form-control" id="email" th:field="*{email}"
-                       data-validation="required email"/>
-                <div class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">
-                    accountNumber Error
-                </div>
-            </div>
-            <div class="form-group col-xs-3">
-                <label for="birthCertificateId">شماره شناسنامه</label>
-                <input type="text" class="form-control" id="birthCertificateId" th:field="*{birthCertificateId}"
-                       data-validation="required number length" data-validation-length="1-10"
-                       data-validation-error-msg="مقدار وارد شده باید عدد باشد"/>
-                <div class="error" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">FirstName Error
-                </div>
-            </div>
-            <div class="form-group col-xs-3">
-                <label for="issueDivision">محل صدور شناسنامه</label>
-                <input lang="fa" type="text" class="form-control" id="issueDivision" th:field="*{issueDivision}"
-                       data-validation="required"/>
-                <div class="error" th:if="${#fields.hasErrors('issueDivision')}" th:errors="*{issueDivision}">
-                    issueDivision Error
-                </div>
-            </div>
+                <div class="row">
+                    <div class="form-group col-xs-3">
+                        <label for="nationalId">کد ملی</label>
+                        <input type="text" class="form-control" id="nationalId" th:field="*{nationalId}"
+                               data-validation="required nid"/>
+                        <div class="error" th:if="${#fields.hasErrors('nationalId')}" th:errors="*{nationalId}">
+                            FirstName
+                            Error
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-3">
+                        <label for="issueDivision">ایمیل</label>
+                        <input type="text" class="form-control" id="email" th:field="*{email}"
+                               data-validation="required email"/>
+                        <div class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">
+                            accountNumber Error
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-3">
+                        <label for="birthCertificateId">شماره شناسنامه</label>
+                        <input type="text" class="form-control" id="birthCertificateId" th:field="*{birthCertificateId}"
+                               data-validation="required number length" data-validation-length="1-10"
+                               data-validation-error-msg="مقدار وارد شده باید عدد باشد"/>
+                        <div class="error" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">FirstName
+                            Error
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-3">
+                        <label for="issueDivision">محل صدور شناسنامه</label>
+                        <input lang="fa" type="text" class="form-control" id="issueDivision" th:field="*{issueDivision}"
+                               data-validation="required"/>
+                        <div class="error" th:if="${#fields.hasErrors('issueDivision')}" th:errors="*{issueDivision}">
+                            issueDivision Error
+                        </div>
+                    </div>
 
-        </div>
-        <div class="row">
-
-            <div class="form-group col-xs-3">
-                <label for="birthDate">تاریخ تولد</label>
-                <input type="text" class="form-control" id="birthDate" th:field="*{birthDate}" data-validation="custom"
-                       data-validation-regexp="^1[34][0-9][0-9]\/((0[1-6]\/((3[0-1])|([1-2][0-9])|(0[1-9])))|((1[0-2]|(0[7-9]))\/(30|([1-2][0-9])|(0[1-9]))))$"
-                       data-validation-error-msg="تاریخ رادرست وارد نمایید(مثال:1361/10/03 )"/>
-                <div class="error" th:if="${#fields.hasErrors('birthDate')}" th:errors="*{birthDate}">birthDate Error
+                </div>
+                <div class="row">
+                    <div class="form-group col-xs-3">
+                        <label for="birthDate">تاریخ تولد</label>
+                        <input type="text" class="form-control"  id="birthDate" th:field="*{birthDate}"
+                               data-validation="custom"
+                               data-validation-regexp="^1[34][0-9][0-9]\/((0[1-6]\/((3[0-1])|([1-2][0-9])|(0[1-9])))|((1[0-2]|(0[7-9]))\/(30|([1-2][0-9])|(0[1-9]))))$"
+                               data-validation-error-msg="تاریخ رادرست وارد نمایید(مثال:1361/10/03 )"/>
+                        <div class="error" th:if="${#fields.hasErrors('birthDate')}" th:errors="*{birthDate}">birthDate
+                            Error
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-3">
+                        <label for="placeOfBirth">محل تولد</label>
+                        <input lang="fa" type="text" class="form-control" id="placeOfBirth" th:field="*{placeOfBirth}"
+                               data-validation="required"/>
+                        <div class="error" th:if="${#fields.hasErrors('placeOfBirth')}" th:errors="*{placeOfBirth}">
+                            placeOfBirth
+                            Error
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-2">
+                        <label for="phone">تلفن </label>
+                        <input dir="ltr" type="text" class="form-control" id="phone" th:field="*{phone}"
+                               data-validation="required number length" data-validation-length="1-8"
+                               data-validation-error-msg="مقدار وارد شده باید عدد باشد"/>
+                        <div class="error" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}">
+                            cellPhone Error
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-1">
+                        <label for="phone">کد تلفن </label>
+                        <input dir="ltr" type="text" class="form-control" id="phoneNumberPlan" th:field="*{phoneNumberPlan}"
+                               data-validation="required number length" data-validation-length="1-5"
+                        />
+                        <div class="error" th:if="${#fields.hasErrors('phoneNumberPlan')}"
+                             th:errors="*{phoneNumberPlan}">
+                            phoneCode Error
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-3">
+                        <label for="cellPhone">تلفن همراه</label>
+                        <input dir="ltr" type="text" class="form-control" id="cellPhone" th:field="*{cellPhone}"
+                               data-validation="custom"
+                               data-validation-regexp="^09(1[0-9]|3[0-9]|2[0-9])-?[0-9]{3}-?[0-9]{4}$"
+                               data-validation-error-msg="تلفن رادرست وارد نمایید(مثال: *********09)"/>
+                        <div class="error" th:if="${#fields.hasErrors('cellPhone')}" th:errors="*{cellPhone}">
+                            cellPhone Error
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="form-group col-xs-3">
-                <label for="placeOfBirth">محل تولد</label>
-                <input lang="fa" type="text" class="form-control" id="placeOfBirth" th:field="*{placeOfBirth}"
-                       data-validation="required"/>
-                <div class="error" th:if="${#fields.hasErrors('placeOfBirth')}" th:errors="*{placeOfBirth}">placeOfBirth
-                    Error
-                </div>
-            </div>
-
-            <div class="form-group col-xs-3">
-                <label for="bankName">نام بانک</label>
-                <!--<input type="text" class="form-control" id="bankName" th:field="*{bankName}"
-                       data-validation="required"/>-->
-                <select id="bankName" th:field="*{bankName}" class="form-control" data-validation="required">
-                    <option selected="selected" value="">انتخاب کنید</option>
-                    <option value="bmi">ملّي ايران</option>
-                    <option value="sepah"> سپه</option>
-                    <option value="edbi"> توسعه صادرات ايران</option>
-                    <option value="bim"> صنعت و معدن</option>
-                    <option value="bki"> کشاورزي</option>
-                    <option value="maskan"> مسکن</option>
-                    <option value="postbank">پست بانک ايران</option>
-                    <option value="ttbank"> توسعه تعاون</option>
-                    <option value="enbank"> اقتصاد نوين</option>
-                    <option value="persian"> پارسيان</option>
-                    <option value="bpi"> پاسارگاد</option>
-                    <option value="karafarin"> کارآفرين</option>
-                    <option value="sb24"> سامان</option>
-                    <option value="sina"> سينا</option>
-                    <option value="sbank"> سرمايه</option>
-                    <option value="shahr"> شهر</option>
-                    <option value="day"> دي</option>
-                    <option value="bsi"> صادرات</option>
-                    <option value="mellat"> ملت</option>
-                    <option value="tejarat"> تجارت</option>
-                    <option value="refah"> رفاه</option>
-                    <option value="tourism"> گردشگري</option>
-                    <option value="izbank"> ايران زمين</option>
-                    <option value="ghavamin"> قوامين</option>
-                    <option value="ansar"> انصار</option>
-                    <option value="middleeast"> خاور ميانه</option>
-                    <option value="ivbb">بانک مشترک ايران-ونزوئلا</option>
-                    <option value="ba24"> آينده</option>
-                    <option value="cid">موسسه اعتباري توسعه</option>
-                    <option value="kosarfci">موسسه اعتباري کوثر مرکزي</option>
-                    <option value="melal">موسسه اعتباري ملل</option>
-                    <option value="cinoor">موسسه اعتباري نور</option>
-                    <option value="caspianci">موسسه اعتباري کاسپين</option>
-                    <option value="qmb"> قرض‌الحسنه مهر ايران</option>
-                    <option value="rqbank"> قرض‌الحسنه رسالت</option>
-                </select>
-                <div class="error" th:if="${#fields.hasErrors('bankName')}" th:errors="*{bankName}">
-                    bankName Error
-                </div>
-            </div>
-            <div class="form-group col-xs-3">
-                <label for="accountNumber">شماره حساب</label>
-                <input type="text" class="form-control" id="accountNumber" th:field="*{accountNumber}"
-                       data-validation="required number length" data-validation-length="1-20"
-                       data-validation-error-msg="مقدار وارد شده باید عدد باشد"/>
-                <div class="error" th:if="${#fields.hasErrors('accountNumber')}" th:errors="*{accountNumber}">
-                    accountNumber Error
-                </div>
-            </div>
-
-        </div>
-        <div class="row">
-
-            <div class="form-group col-xs-1">
-                <label for="phone">کد تلفن </label>
-                <input type="text" class="form-control" id="phoneNumberPlan" th:field="*{phoneNumberPlan}"
-                       data-validation="required number length" data-validation-length="1-5"
-                />
-                <div class="error" th:if="${#fields.hasErrors('phoneNumberPlan')}" th:errors="*{phoneNumberPlan}">
-                    phoneCode Error
-                </div>
-            </div>
-            <div class="form-group col-xs-2">
-                <label for="phone">تلفن </label>
-                <input type="text" class="form-control" id="phone" th:field="*{phone}"
-                       data-validation="required number length" data-validation-length="1-8"
-                       data-validation-error-msg="مقدار وارد شده باید عدد باشد"/>
-                <div class="error" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}">
-                    cellPhone Error
-                </div>
-            </div>
-            <div class="form-group col-xs-3">
-                <label for="cellPhone">تلفن همراه</label>
-                <input type="text" class="form-control" id="cellPhone" th:field="*{cellPhone}"
-                       data-validation="custom"
-                       data-validation-regexp="^09(1[0-9]|3[0-9]|2[0-9])-?[0-9]{3}-?[0-9]{4}$"
-                       data-validation-error-msg="تلفن رادرست وارد نمایید(مثال: *********09)"/>
-                <div class="error" th:if="${#fields.hasErrors('cellPhone')}" th:errors="*{cellPhone}">
-                    cellPhone Error
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="form-group col-xs-4">
-                <label for="cellPhone">عکس </label>
-                <input data-validation="required mime size"
-                       data-validation-allowing="jpg, png"
-                       data-validation-max-size="200KB"
-                       type="file" title="personalImage" name="files"/></div>
-            <div class="form-group col-xs-4">
-                <label for="cellPhone">تصویر کارت ملی</label>
-                <input data-validation="required mime size"
-                       data-validation-allowing="jpg, png"
-                       data-validation-max-size="200KB"
-                       type="file" title="nationalCard" name="files"/></div>
         </div>
         <div class="panel panel-info">
-            <div class="panel-heading"><h3 class="panel-title">اطلاعات اولیه آدرس</h3></div>
+            <div class="panel-heading"><h3 class="panel-title">تحصیلات</h3></div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="form-group col-xs-3">
+                        <label for="educationLevel">ميزان تحصيلات</label>
+                        <select id="educationLevel" th:field="*{educationLevel}" class="form-control" data-validation="required">
+                            <option selected="selected" value="">---</option>
+                            <option value="زير ديپلم_0">بيسواد</option>
+                            <option value="زير ديپلم_1">تحصيلات قديمي</option>
+                            <option value="زير ديپلم_2">سال اول دبستان</option>
+                            <option value="زير ديپلم_3">سال دوم دبستان</option>
+                            <option value="زير ديپلم_4">سال سوم دبستان</option>
+                            <option value="زير ديپلم_5">سال چهارم دبستان</option>
+                            <option value="زير ديپلم_6">سال پنجم دبستان (پايان ابتدايي)</option>
+                            <option value="زير ديپلم_7">سال ششم دبستان قديم</option>
+                            <option value="زير ديپلم_8">سال اول راهنمايي</option>
+                            <option value="زير ديپلم_9">سال دوم راهنمايي</option>
+                            <option value="زير ديپلم_10">سال سوم راهنمايي (سيكل)</option>
+                            <option value="زير ديپلم_11">سال اول دبيرستان/متوسطه</option>
+                            <option value="زير ديپلم_12">سال دوم دبيرستان/متوسطه</option>
+                            <option value="زير ديپلم_13">سال سوم دبيرستان/متوسطه</option>
+                            <option value="ديپلم_1">ديپلم</option>
+                            <option value="ديپلم افتخاري_1">ديپلم افتخاري</option>
+                            <option value="فوق ديپلم_1">فوق ديپلم</option>
+                            <option value="ليسانس_1">ليسانس</option>
+                            <option value="فوق ليسانس_1">فوق ليسانس</option>
+                            <option value="دكتري_1">دكتري عمومي</option>
+                            <option value="دكتري_2">دكتري حرفه اي</option>
+                            <option value="دكتري_3">دكتري تخصصي</option>
+                            <option value="دكتري_4">دكتري فوق تخصصي</option>
+                            <option value="دكتري_5">دكتري Ph.D.</option>
+                            <option value="دكتري_6">درجه هنري سطح 1</option>
+                            <option value="فوق ليسانس_2">درجه هنري سطح 2</option>
+                            <option value="ليسانس_2">درجه هنري سطح 3</option>
+                            <option value="فوق ديپلم_2">درجه هنري سطح 4</option>
+                            <option value="ديپلم_2">درجه هنري سطح 5</option>
+                            <option value="ساير_1">ساير</option>
+                        </select>
+                        <div class="error" th:if="${#fields.hasErrors('educationLevel')}" th:errors="*{educationLevel}">
+                            educationLevel Error
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-3">
+                        <label for="educationField">رشته تحصیلی</label>
+                        <input type="text" class="form-control" id="educationField" th:field="*{educationField}"
+                               data-validation="required"/>
+                        <div class="error" th:if="${#fields.hasErrors('educationField')}" th:errors="*{educationField}">
+                            educationField Error
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-info">
+            <div class="panel-heading"><h3 class="panel-title">اطلاعات حساب</h3></div>
+            <div class="panel-body">
+                <!--<div class="alert alert-danger" role="alert"><span>توجه! </span>-->
+                <!--<a id="search-address" href="#"> برای انتخاب مکان از درختواره تقسیمات کشوری کلیک کنید...</a>-->
+                <!--</div>-->
+                <div class="row">
+                    <div class="form-group col-xs-3">
+                        <label for="bankName">نام بانک</label>
+                        <!--<input type="text" class="form-control" id="bankName" th:field="*{bankName}"
+                               data-validation="required"/>-->
+                        <select id="bankName" th:field="*{bankName}" class="form-control" data-validation="required">
+                            <option selected="selected" value="">انتخاب کنید</option>
+                            <option value="bmi">ملّي ايران</option>
+                            <option value="sepah"> سپه</option>
+                            <option value="edbi"> توسعه صادرات ايران</option>
+                            <option value="bim"> صنعت و معدن</option>
+                            <option value="bki"> کشاورزي</option>
+                            <option value="maskan"> مسکن</option>
+                            <option value="postbank">پست بانک ايران</option>
+                            <option value="ttbank"> توسعه تعاون</option>
+                            <option value="enbank"> اقتصاد نوين</option>
+                            <option value="persian"> پارسيان</option>
+                            <option value="bpi"> پاسارگاد</option>
+                            <option value="karafarin"> کارآفرين</option>
+                            <option value="sb24"> سامان</option>
+                            <option value="sina"> سينا</option>
+                            <option value="sbank"> سرمايه</option>
+                            <option value="shahr"> شهر</option>
+                            <option value="day"> دي</option>
+                            <option value="bsi"> صادرات</option>
+                            <option value="mellat"> ملت</option>
+                            <option value="tejarat"> تجارت</option>
+                            <option value="refah"> رفاه</option>
+                            <option value="tourism"> گردشگري</option>
+                            <option value="izbank"> ايران زمين</option>
+                            <option value="ghavamin"> قوامين</option>
+                            <option value="ansar"> انصار</option>
+                            <option value="middleeast"> خاور ميانه</option>
+                            <option value="ivbb">بانک مشترک ايران-ونزوئلا</option>
+                            <option value="ba24"> آينده</option>
+                            <option value="cid">موسسه اعتباري توسعه</option>
+                            <option value="kosarfci">موسسه اعتباري کوثر مرکزي</option>
+                            <option value="melal">موسسه اعتباري ملل</option>
+                            <option value="cinoor">موسسه اعتباري نور</option>
+                            <option value="caspianci">موسسه اعتباري کاسپين</option>
+                            <option value="qmb"> قرض‌الحسنه مهر ايران</option>
+                            <option value="rqbank"> قرض‌الحسنه رسالت</option>
+                        </select>
+                        <div class="error" th:if="${#fields.hasErrors('bankName')}" th:errors="*{bankName}">
+                            bankName Error
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-3">
+                        <label for="accountNumber">شماره حساب</label>
+                        <input dir="ltr" type="text" class="form-control" id="accountNumber" th:field="*{accountNumber}"
+                               data-validation="required number length" data-validation-length="1-20"
+                               data-validation-error-msg="مقدار وارد شده باید عدد باشد"/>
+                        <div class="error" th:if="${#fields.hasErrors('accountNumber')}" th:errors="*{accountNumber}">
+                            accountNumber Error
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-3">
+                        <label for="iban">شماره شبا</label>
+                        <div  class="input-group">
+                            <input dir="ltr" type="text" class="form-control" aria-describedby="basic-addon1" id="iban"
+                                   th:field="*{iban}"
+                                   data-validation="required iban" data-validation-length="1-20"/>
+                            <span  class="input-group-addon" id="basic-addon1">IR</span>
+                        </div>
+                        <div class="error" th:if="${#fields.hasErrors('iban')}" th:errors="*{iban}">
+                            iban Error
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-3">
+                        <label for="cardNumber">شماره کارت</label>
+                        <input dir="ltr" type="text" class="form-control" id="cardNumber" th:field="*{cardNumber}"
+                               data-validation="required number length" data-validation-length="16-19"
+                               data-validation-error-msg="مقدار وارد شده صحیح نمیباشد"/>
+                        <div class="error" th:if="${#fields.hasErrors('cardNumber')}" th:errors="*{cardNumber}">
+                            cardNumber Error
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-info">
+            <div class="panel-heading"><h3 class="panel-title">اطلاعات آدرس</h3></div>
             <div class="panel-body">
                 <div class="alert alert-danger" role="alert"><span>توجه! </span>
                     <a id="search-address" href="#"> برای انتخاب مکان از درختواره تقسیمات کشوری کلیک کنید...</a>
@@ -269,7 +351,7 @@
                     <div class="form-group col-xs-3">
                         <label for="address.bakhsh">بخش</label>
                         <input lang="fa" type="text" class="form-control" id="address.bakhsh"
-                               th:field="*{address.bakhsh}" th:disabled="disabled" />
+                               th:field="*{address.bakhsh}" th:disabled="disabled"/>
                         <div class="error" th:if="${#fields.hasErrors('address.bakhsh')}" th:errors="*{address.bakhsh}">
                             address Error
                         </div>
@@ -279,7 +361,7 @@
                     <div class="form-group col-xs-3">
                         <label for="address.dehestan">دهستان</label>
                         <input lang="fa" type="text" class="form-control" id="address.dehestan"
-                               th:field="*{address.dehestan}" th:disabled="disabled" />
+                               th:field="*{address.dehestan}" th:disabled="disabled"/>
                         <div class="error" th:if="${#fields.hasErrors('address.dehestan')}"
                              th:errors="*{address.dehestan}">address
                             Error
@@ -288,7 +370,7 @@
                     <div class="form-group col-xs-3">
                         <label for="address.dehyari">روستا</label>
                         <input lang="fa" type="text" class="form-control" id="address.dehyari"
-                               th:field="*{address.dehyari}"  th:disabled="disabled" />
+                               th:field="*{address.dehyari}" th:disabled="disabled"/>
                         <div class="error" th:if="${#fields.hasErrors('address.dehyari')}"
                              th:errors="*{address.dehyari}">address Error
                         </div>
@@ -302,16 +384,35 @@
                     <!--</div>-->
                     <!--</div>-->
                 </div>
+                <div class="row">
+                    <div class="form-group col-xs-12">
+                        <label for="address.localAddress">جزئیات آدرس</label>
+                        <input lang="fa" type="text" class="form-control" id="address.localAddress"
+                               th:field="*{address.localAddress}"
+                               data-validation="required"/>
+                        <div class="error" th:if="${#fields.hasErrors('address.localAddress')}"
+                             th:errors="*{address.localAddress}">address Error
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="row">
-            <div class="form-group col-xs-12">
-                <label for="address.localAddress">جزئیات آدرس</label>
-                <input lang="fa" type="text" class="form-control" id="address.localAddress"
-                       th:field="*{address.localAddress}"
-                       data-validation="required"/>
-                <div class="error" th:if="${#fields.hasErrors('address.localAddress')}"
-                     th:errors="*{address.localAddress}">address Error
+        <div class="panel panel-info">
+            <div class="panel-heading"><h3 class="panel-title">بارگذاری عکس</h3></div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="form-group col-xs-4">
+                        <label for="cellPhone">عکس </label>
+                        <input data-validation="required mime size"
+                               data-validation-allowing="jpg, png"
+                               data-validation-max-size="200KB"
+                               type="file" title="personalImage" name="files"/></div>
+                    <div class="form-group col-xs-4">
+                        <label for="cellPhone">تصویر کارت ملی</label>
+                        <input data-validation="required mime size"
+                               data-validation-allowing="jpg, png"
+                               data-validation-max-size="200KB"
+                               type="file" title="nationalCard" name="files"/></div>
                 </div>
             </div>
         </div>
@@ -336,11 +437,6 @@
                 </div>
             </div>
         </div>
-        <!--<p class="P8"><span class="T8">تعهد نامه بازاریابان</span></p>-->
-        <!--<p class="P2"><span class="T8">اینجانب     فرزند                    کد ملی   تعهد می سپارم</span></p>-->
-        <!--<p class="P2"><span class="T8">صادقانه هرنوع درآمدی را برای شرکت واریز نمایم</span></p>-->
-        <!--<p class="P2"><span class="T8">در صورت عدم رعایت ضوابط و مقررات ، و عدم رضایت مشتریان و یا شرکت از رفتار اینجانب ، شرکت می تواند مرا حذف نماید </span>-->
-        <!--</p>-->
         <button type="submit" id="submit" class="btn btn-primary">ثبت</button>
     </form>
     <!-- Modal -->

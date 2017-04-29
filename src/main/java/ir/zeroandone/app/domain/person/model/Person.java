@@ -118,6 +118,25 @@ public class Person {
     @Column(columnDefinition = "nvarchar(50)")
     private String bankName;
 
+    @NotNull
+    @Column(columnDefinition = "nvarchar(50)")
+    private String educationLevel;
+
+    @NotNull
+    @Column(columnDefinition = "nvarchar(50)")
+    private String educationField;
+
+    @NotNull
+    @Column(columnDefinition = "nvarchar(30)")
+    private String iban;
+
+    @NotNull
+    @Column(columnDefinition = "nvarchar(20)")
+    private String cardNumber;
+
+
+
+
 
     private Date createdOn;
     private Date updatedOn;
@@ -324,5 +343,38 @@ public class Person {
 
     public void setUpdatedOn(Date updatedOn) {
         this.updatedOn = updatedOn;
+    }
+
+
+    public String getIban() {
+        return iban;
+    }
+
+    public void setIban(String iban) {
+        this.iban = iban;
+    }
+
+    public String getCardNumber() {
+        return cardNumber;
+    }
+
+    public void setCardNumber(String cardNumber) {
+        this.cardNumber = cardNumber;
+    }
+
+    public String getEducationLevel() {
+        return educationLevel;
+    }
+
+    public void setEducationLevel(String educationLevel) {
+        this.educationLevel = educationLevel;
+    }
+
+    public String getEducationField() {
+        return educationField;
+    }
+
+    public void setEducationField(String educationField) {
+        this.educationField = educationField;
     }
 }

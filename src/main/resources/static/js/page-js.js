@@ -8,7 +8,7 @@ $.formUtils.addValidator({
 });
 $.validate({
     lang: 'fa',
-    modules: 'date, security,file'
+    modules: 'date, security,file,sepa'
 });
 
 $(document).on('hidden.bs.modal', '#modal-search-address', function () {
