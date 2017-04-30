@@ -1,0 +1,92 @@
+<html layout:decorator="layout2">
+<div layout:fragment="content">
+    <form action="#" th:action="@{/persons/contact}" enctype="multipart/form-data" th:object="${contact}" method="post">
+        <div class="panel panel-info">
+            <div class="panel-heading"><h3 class="panel-title">فرم تماس با ما</h3></div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="form-group col-xs-3">
+                        <label for="name">نام</label>
+                        <input lang="fa" type="text" class="form-control" id="name" th:field="*{name}"/>
+                        <div class="error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">name
+                            Error
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-xs-3">
+                        <label for="email">ایمیل</label>
+                        <input type="text" class="form-control" id="email" th:field="*{email}"
+                               data-validation="email"/>
+                        <div class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">
+                            accountNumber Error
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-xs-3">
+                        <label for="cellPhone">تلفن همراه</label>
+                        <input dir="ltr" type="text" class="form-control" id="cellPhone" th:field="*{cellPhone}"
+                               data-validation="custom"
+                               data-validation-regexp="^09(1[0-9]|3[0-9]|2[0-9])-?[0-9]{3}-?[0-9]{4}$"
+                               data-validation-error-msg="تلفن رادرست وارد نمایید(مثال: *********09)"/>
+                        <div class="error" th:if="${#fields.hasErrors('cellPhone')}" th:errors="*{cellPhone}">
+                            cellPhone Error
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-xs-3">
+                        <label for="requestType">نوع درخواست</label>
+                        <select id="requestType" th:field="*{requestType}" class="form-control"
+                                data-validation="required">
+                            <option selected="selected" value="">---</option>
+                            <option value="1">انتقاد از سایت</option>
+                            <option value="2">پیشنهاد برای سایت</option>
+                            <option value="3">پیگیری ثبت نام</option>
+                        </select>
+                        <div class="error" th:if="${#fields.hasErrors('requestType')}" th:errors="*{requestType}">
+                            requestType Error
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                <div class="form-group col-xs-12">
+                    <label for="title">عنوان</label>
+                    <input lang="fa" type="text" class="form-control" id="title" th:field="*{title}"
+                           data-validation="required"/>
+                    <div class="error" th:if="${#fields.hasErrors('title')}" th:errors="*{title}">title
+                        Error
+                    </div>
+                </div>
+            </div>
+                <div class="row">
+                <div class="form-group col-xs-12">
+                    <label for="name">پیغام</label>
+                    <textarea row="5" style="resize: none;height: 169px;width: 1108px;" lang="fa" type="text" class="form-control" id="message" th:field="*{message}"
+                           data-validation="required"/>
+                    <div class="error" th:if="${#fields.hasErrors('message')}" th:errors="*{message}">message
+                        Error
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+<button type="submit" id="submit" class="btn btn-primary">ثبت</button>
+</form>
+</div>
+</html>
+<script>
+    $.validate({
+        lang: 'fa',
+        modules: 'date, security',
+        ignore:['email','cellPhone']
+    });
+    $(function () {
+        $("input:not([name*=english],[name*=email])").farsiInput();
+    });
+</script>
+<script src="/bower_components/jquery-ui/jquery-ui.min.js"></script>
+<script src="/js/custom-validations.js"></script>
+<script src="/js/jquery.farsiInput.js"></script>
+

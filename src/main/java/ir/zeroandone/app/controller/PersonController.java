@@ -3,6 +3,8 @@ package ir.zeroandone.app.controller;
 import ir.zeroandone.app.application.address.dto.AddressDto;
 import ir.zeroandone.app.application.address.service.AddressService;
 import ir.zeroandone.app.application.sms.service.SmsService;
+import ir.zeroandone.app.domain.contact.model.Contact;
+import ir.zeroandone.app.domain.contact.repository.ContactRepository;
 import ir.zeroandone.app.domain.person.model.Attachment;
 import ir.zeroandone.app.domain.person.repository.AttachmentRepository;
 import ir.zeroandone.app.domain.person.model.Person;
@@ -35,6 +37,9 @@ public class PersonController extends WebMvcConfigurerAdapter {
 
     @Autowired
     private PersonRepository repository;
+
+    @Autowired
+    private ContactRepository contactRepository;
 
     @Autowired
     private AttachmentRepository attachmentRepo;
@@ -133,6 +138,22 @@ public class PersonController extends WebMvcConfigurerAdapter {
         else
         return new ResponseEntity(attachment.getContent(), HttpStatus.ACCEPTED);
     }
+
+    @RequestMapping(value = "/contact", method = RequestMethod.GET)
+    public String newContact(Contact contact) {
+        return "persons/contact";
+    }
+
+    @RequestMapping(value = "/contact", method = RequestMethod.POST)
+    public String createContact(@ModelAttribute("contact") @Valid Contact contact, BindingResult bindingResult) {
+
+        if (bindingResult.hasErrors()) {
+            return "persons/contact";
+        }
+        contactRepository.save(contact);
+        return "persons/contact-results";
+    }
+
 
 //    @PostMapping("/api/upload/multi/model")
 //    public ResponseEntity<?> multiUploadFileModel(@ModelAttribute UploadModel model) {
