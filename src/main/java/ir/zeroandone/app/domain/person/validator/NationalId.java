@@ -1,4 +1,4 @@
-package ir.zeroandone.app.domain.validator;
+package ir.zeroandone.app.domain.person.validator;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
