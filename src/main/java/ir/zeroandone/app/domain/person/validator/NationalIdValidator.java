@@ -1,4 +1,4 @@
-package ir.zeroandone.app.domain.validator;
+package ir.zeroandone.app.domain.person.validator;
 
 import com.google.common.base.Strings;
 

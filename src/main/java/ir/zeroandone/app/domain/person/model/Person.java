@@ -1,6 +1,6 @@
 package ir.zeroandone.app.domain.person.model;
 
-import ir.zeroandone.app.domain.validator.NationalId;
+import ir.zeroandone.app.domain.person.validator.NationalId;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
