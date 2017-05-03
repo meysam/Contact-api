@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Controller
 public class UserController {
 
@@ -50,9 +53,11 @@ public class UserController {
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
     public String registration(@ModelAttribute("userForm") User userForm, BindingResult bindingResult, Model model) {
         Role role = new Role();
-        role.setName("admin");
+        List<Role> roles=new ArrayList<>();
+        role.setName("ROLE_ADMIN");
         roleRepository.save(role);
-        userForm.getRoles(role);
+        roles.add(role);
+        userForm.setRoles(roles);
         userValidator.validate(userForm, bindingResult);
 
         if (bindingResult.hasErrors()) {

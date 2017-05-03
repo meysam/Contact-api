@@ -84,10 +84,14 @@ public class PersonController extends WebMvcConfigurerAdapter {
         attachments.get(0).setTitle("Personal");
         attachments.get(1).setTitle("NationalCard");
         person.setAttachments(attachments);
-        repository.save(person);
-        String message = String.format("%s \n %s : %s", "اطلاعات شما با موفقیت ثبت شد.", "کد رهگیری شما", person.getFollowingCode());
-        smsService.sendBySoap(message, person.getCellPhone());
-        return "persons/results";
+        Person personByNationalId = repository.findPersonByNationalId(person.getNationalId());
+        if (personByNationalId == null) {
+            repository.save(person);
+            String message = String.format("%s \n %s : %s", "اطلاعات شما با موفقیت ثبت شد.", "کد رهگیری شما", person.getFollowingCode());
+            smsService.sendBySoap(message, person.getCellPhone());
+            return "persons/results";
+        }
+        return "persons/new";
     }
 
     @RequestMapping(value = "/address", method = RequestMethod.GET)
@@ -136,7 +140,7 @@ public class PersonController extends WebMvcConfigurerAdapter {
         if (attachment == null)
             return ResponseEntity.noContent().build();
         else
-        return new ResponseEntity(attachment.getContent(), HttpStatus.ACCEPTED);
+            return new ResponseEntity(attachment.getContent(), HttpStatus.ACCEPTED);
     }
 
     @RequestMapping(value = "/contact", method = RequestMethod.GET)

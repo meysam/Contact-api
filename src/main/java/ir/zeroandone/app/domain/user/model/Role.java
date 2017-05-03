@@ -1,17 +1,22 @@
 package ir.zeroandone.app.domain.user.model;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
-@Table(name = "role")
+@Table(name = "ROLE")
 public class Role {
-    private Long id;
-    private String name;
-    private Set<User> users;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
+    private String name;
+
+    @ManyToMany(mappedBy ="roles")
+    private List<User> users;
+
     public Long getId() {
         return id;
     }
@@ -28,12 +33,11 @@ public class Role {
         this.name = name;
     }
 
-    @ManyToMany(mappedBy = "roles")
-    public Set<User> getUsers() {
+    public List<User> getUsers() {
         return users;
     }
 
-    public void setUsers(Set<User> users) {
+    public void setUsers(List<User> users) {
         this.users = users;
     }
 }

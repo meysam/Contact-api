@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="manager">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <meta property="og:title" content="بازاریاب آسان" />
+    <meta property="og:title" content="بازاریاب آسان"/>
     <meta property="og:site_name" content="بازاریاب آسان"/>
-    <meta property="og:description" content="شرکت مهندسی توسعه طرح و پردازش صفر و یک جهت جذب راه اندازی سایت برای داوطلبان انتخابات شوراهای شهر و روستا ، از جوانان عزیزی که دارای روابط عمومی قوی ، هستند درخواست همکاری دارد " />
-    <meta property="og:image" content="/img/zeroone.jpg" />
+    <meta property="og:description"
+          content="شرکت مهندسی توسعه طرح و پردازش صفر و یک جهت جذب راه اندازی سایت برای داوطلبان انتخابات شوراهای شهر و روستا ، از جوانان عزیزی که دارای روابط عمومی قوی ، هستند درخواست همکاری دارد "/>
+    <meta property="og:image" content="/img/zeroone.jpg"/>
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content=""/>
     <meta name="author" content=""/>
@@ -37,8 +38,8 @@
 
 <!-- Fixed navbar -->
 <!--<nav class="navbar navbar-default navbar-fixed-top">-->
-<nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
+<nav class="navbar navbar-default navbar-inverse" role="navigation">
+    <div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
                     aria-expanded="false" aria-controls="navbar">
@@ -51,8 +52,27 @@
         </div>
         <ul class="nav navbar-nav">
             <li class="active"><a href="/persons/new">ثبت نام</a></li>
+            <li sec:authorize="isAuthenticated()"><a href="/persons/list">لیست افراد ثبت شده</a></li>
             <li><a href="/persons/contact">تماس باما</a></li>
             <li><a href="#">در باره ما</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-left" sec:authorize="isAuthenticated()">
+            <li class="active">
+                <form class="form" role="form" id="logoutForm" method="post" action="/logout">
+                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                </form>
+                <p class="navbar-text">نام کاربر :</p>
+                <p class="navbar-text" sec:authentication="name"></p>
+            </li>
+            <li class="active">
+                <a onclick="document.forms['logoutForm'].submit()"><span class="glyphicon glyphicon-user"></span> خروج
+                </a>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-left" sec:authorize="!isAuthenticated()">
+            <li class="active">
+                <a href="/login"> <span class="glyphicon glyphicon-log-in"></span> ورود به بخش مدیریت </a>
+            </li>
         </ul>
     </div>
 </nav>

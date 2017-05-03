@@ -294,7 +294,7 @@
                         <div  class="input-group">
                             <input dir="ltr" type="text" class="form-control" aria-describedby="basic-addon1" id="iban"
                                    th:field="*{iban}"
-                                   data-validation="required iban" data-validation-length="1-20"/>
+                                   data-validation="required" data-validation-length="1-20"/>
                             <span  class="input-group-addon" id="basic-addon1">IR</span>
                         </div>
                         <div class="error" th:if="${#fields.hasErrors('iban')}" th:errors="*{iban}">
