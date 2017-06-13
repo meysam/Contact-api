@@ -1,7 +1,7 @@
 target/
-marketer.iml
-marketer.ipr
-marketer.iws
+contact-api.iml
+contact-api.ipr
+contact-api.iws
 .idea/
 node/
 node_modules/
