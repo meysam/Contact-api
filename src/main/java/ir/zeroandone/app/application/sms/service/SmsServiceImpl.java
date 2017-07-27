@@ -15,13 +15,13 @@ import java.net.URLEncoder;
 
 @Component
 public class SmsServiceImpl implements SmsService {
-    private static final String END_POINT_URL = "http://sms.magfa.com/services/urn:SOAPSmsQueue";
+    private static final String END_POINT_URL = "http://sms";
 
     private static final String METHOD_CALL = "enqueue";
-    private static final String USER_NAME = "zeroOne"; //fill this with your username
-    private static final String PASSWORD = "glwfvxzbMaoHVpUW";  //fill this with your password
-    private static final String SENDER_NUMBER = "300074143"; //your 3000xxxxx number
-    private static final String RECIPIENT_NUMBER = "09203030031"; //the phone number you wish to sendByHttp something to...
+    private static final String USER_NAME = ""; //fill this with your username
+    private static final String PASSWORD = "";  //fill this with your password
+    private static final String SENDER_NUMBER = ""; //your 3000xxxxx number
+    private static final String RECIPIENT_NUMBER = ""; //the phone number you wish to sendByHttp something to...
 
     private static final String DOMAIN = "magfa";    //fill this with your domain
     private static final String MESSGAE_TEXT = "MAGFA http_enqueue test";
