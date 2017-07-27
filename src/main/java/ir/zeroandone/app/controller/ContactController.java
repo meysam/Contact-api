@@ -1,35 +1,15 @@
 package ir.zeroandone.app.controller;
 
-import ir.zeroandone.app.application.address.dto.AddressDto;
-import ir.zeroandone.app.application.address.service.AddressService;
-import ir.zeroandone.app.application.sms.service.SmsService;
 import ir.zeroandone.app.domain.contact.model.Contact;
 import ir.zeroandone.app.domain.contact.repository.ContactRepository;
-import ir.zeroandone.app.domain.person.model.Attachment;
-import ir.zeroandone.app.domain.person.repository.AttachmentRepository;
-import ir.zeroandone.app.domain.person.model.Person;
-import ir.zeroandone.app.domain.person.repository.PersonRepository;
-import ir.zeroandone.app.infra.helper.RandomString;
-import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/contact")
